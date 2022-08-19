@@ -1,0 +1,3 @@
+const SEARCH_RECIPES = 'SEARCH_RECIPES';
+
+export default SEARCH_RECIPES;

@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import searchRecipes from '../redux/actions';
 
 const SEARCH_ENDPOINTS = {
   ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
@@ -6,7 +9,7 @@ const SEARCH_ENDPOINTS = {
   'first-letter': 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
 };
 
-function SearchBar() {
+function SearchBar({ doSearch }) {
   const [search, setSearch] = useState({
     text: '',
     searchType: '',
@@ -19,7 +22,7 @@ function SearchBar() {
       return;
     }
     const endpoint = SEARCH_ENDPOINTS[searchType].concat(text);
-    console.log(endpoint);
+    doSearch(endpoint);
   };
 
   return (
@@ -76,4 +79,12 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+const mapDispatchToProps = (dispatch) => ({
+  doSearch: (endpoint) => dispatch(searchRecipes(endpoint)),
+});
+
+SearchBar.propTypes = {
+  doSearch: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(SearchBar);
