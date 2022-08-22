@@ -77,7 +77,6 @@ class Login extends React.Component {
       </div>
     );
   }
-}
 
 Login.propTypes = {
   history: PropTypes.shape({
