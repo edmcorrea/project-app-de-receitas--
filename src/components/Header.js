@@ -46,10 +46,9 @@ function Header({ pathname }) {
             {showIcon && (
               <button
                 type="button"
-                data-testid="search-top-btn"
                 onClick={ () => setSearchBar(true) }
               >
-                <img src={ searchIcon } alt="searchIcon" />
+                <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
               </button>
             )}
           </>
