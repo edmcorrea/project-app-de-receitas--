@@ -1,12 +1,7 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
-import { createStore } from 'redux';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import rootReducer from '../redux/reducers';
 import App from '../App';
-import Login from '../pages/Login';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 
 describe('verifica a tela de login', () => {
@@ -17,14 +12,16 @@ describe('verifica a tela de login', () => {
   });
 
   test('verifica se login é exibida corretamente', () => {
-    const store = createStore(rootReducer);
-    render(
+    // const store = createStore(rootReducer);
+    const { history } = renderWithRouterAndRedux(<App />, { initialPath: '/login' });
+    console.log(history);
+    /*     render(
       <Provider store={ store }>
         <MemoryRouter>
           <Login />
         </MemoryRouter>
       </Provider>,
-    );
+    ); */
     expect(screen.getByText(/email/i)).toBeInTheDocument();
     expect(screen.getByText(/senha/i)).toBeInTheDocument();
   });
