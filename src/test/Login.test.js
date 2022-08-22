@@ -17,14 +17,15 @@ describe('verifica a tela de login', () => {
   });
 
   test('verifica se login é exibida corretamente', () => {
-    const store = createStore(rootReducer);
-    render(
+    // const store = createStore(rootReducer);
+    const { history } = renderWithRouterAndRedux(<App />, { initialPath: '/login' });
+    /*     render(
       <Provider store={ store }>
         <MemoryRouter>
           <Login />
         </MemoryRouter>
       </Provider>,
-    );
+    ); */
     expect(screen.getByText(/email/i)).toBeInTheDocument();
     expect(screen.getByText(/senha/i)).toBeInTheDocument();
   });
