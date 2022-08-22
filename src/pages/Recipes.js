@@ -2,17 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RecipeMealCard from '../components/RecipeMealCard';
-import searchRecipes from '../redux/actions';
+import { nameHeader, searchRecipes } from '../redux/actions';
 import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import fetchEndPoint from '../services/fetchFunction';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Recipes(props) {
-  const { getRecipes, recipes } = props;
+  const { getRecipes, updateCurrentPath, recipes } = props;
   const { match: { path } } = props;
 
   const [type, setType] = useState('meals');
   const [categoriesRecipes, setCategoriesRecipes] = useState([]);
   const maxRecipesToShow = 12;
+
+  useEffect(() => {
+    updateCurrentPath(path);
+  }, []);
 
   useEffect(() => {
     console.log(type);
@@ -23,7 +29,7 @@ function Recipes(props) {
       getRecipes('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
       setType('drinks');
     }
-  }, []);
+  }, [type]);
 
   const getFirstFive = (categories) => {
     const maxCategories = 5;
@@ -48,10 +54,11 @@ function Recipes(props) {
 
   const fetchRecipesByCategory = ({ target: { value } }) => {
     console.log(value);
-  }
+  };
 
   return (
     <div>
+      <Header />
       { recipes[type]
         && recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
           .map((recipe, index) => {
@@ -82,7 +89,7 @@ function Recipes(props) {
             {category.strCategory}
           </button>))}
       </div>
-      <p>Recipes</p>
+      <Footer />
     </div>
   );
 }
@@ -91,6 +98,7 @@ Recipes.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   getRecipes: PropTypes.func.isRequired,
+  updateCurrentPath: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -99,6 +107,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getRecipes: (endpoint) => dispatch(searchRecipes(endpoint)),
+  updateCurrentPath: (pathName) => dispatch(nameHeader(pathName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

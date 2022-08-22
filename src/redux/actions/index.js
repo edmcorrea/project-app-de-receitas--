@@ -1,13 +1,25 @@
 import fetchEndPoint from '../../services/fetchFunction';
-import SEARCH_RECIPES from './actionTypes';
+import { CHANGE_FETCH_STATUS, SEARCH_RECIPES } from './actionTypes';
+
+export const NAME_HEADER = 'NAME_HEADER';
+
+export const nameHeader = (pathname) => ({
+  type: NAME_HEADER,
+  pathname,
+});
 
 const saveSearchedRecipes = (searchedRecipes) => ({
   type: SEARCH_RECIPES,
   payload: searchedRecipes,
 });
 
-const searchRecipes = (endpoint) => async (dispatch) => {
-  dispatch(saveSearchedRecipes(await fetchEndPoint(endpoint)));
-};
+const changeFetchStatus = (isFetching) => ({
+  type: CHANGE_FETCH_STATUS,
+  payload: isFetching,
+});
 
-export default searchRecipes;
+export const searchRecipes = (endpoint) => async (dispatch) => {
+  dispatch(changeFetchStatus(true));
+  dispatch(saveSearchedRecipes(await fetchEndPoint(endpoint)));
+  dispatch(changeFetchStatus(false));
+};
