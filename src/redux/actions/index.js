@@ -1,4 +1,5 @@
-import SEARCH_RECIPES, { CHANGE_FETCH_STATUS } from './actionTypes';
+import SEARCH_RECIPES from './actionTypes';
+
 export const NAME_HEADER = 'NAME_HEADER';
 
 export const nameHeader = (pathname) => ({
@@ -11,15 +12,8 @@ const saveSearchedRecipes = (searchedRecipes) => ({
   payload: searchedRecipes,
 });
 
-const changeFetchStatus = (isFetching) => ({
-  type: CHANGE_FETCH_STATUS,
-  payload: isFetching,
-});
-
 export const searchRecipes = (endpoint) => async (dispatch) => {
-  dispatch(changeFetchStatus(true));
   const request = await fetch(endpoint);
   const data = await request.json();
   dispatch(saveSearchedRecipes(data));
-  dispatch(changeFetchStatus(false));
 };

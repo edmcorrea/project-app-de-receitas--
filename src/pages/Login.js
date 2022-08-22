@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class Login extends React.Component {
   constructor() {
@@ -77,6 +77,7 @@ class Login extends React.Component {
       </div>
     );
   }
+}
 
 Login.propTypes = {
   history: PropTypes.shape({

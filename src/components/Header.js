@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
-function Header({ pathname }) {
+function Header({ pathname, history }) {
   const [nameHeader, setNameHeader] = useState('');
   const [showIcon, setshowIcon] = useState(true);
   const [showSearchBar, setSearchBar] = useState(false);
@@ -36,7 +36,7 @@ function Header({ pathname }) {
   return (
     <div>
       {(showSearchBar)
-        ? <SearchBar />
+        ? <SearchBar history={ history } />
         : (
           <>
             <Link to="/profile">
@@ -59,6 +59,12 @@ function Header({ pathname }) {
 
 Header.propTypes = {
   pathname: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const mapStateToProps = (store) => ({
