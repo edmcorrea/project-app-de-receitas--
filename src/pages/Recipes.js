@@ -46,6 +46,10 @@ function Recipes(props) {
     fetchCategories();
   }, [type]);
 
+  const fetchRecipesByCategory = ({ target: { value } }) => {
+    console.log(value);
+  }
+
   return (
     <div>
       { recipes[type]
@@ -72,6 +76,8 @@ function Recipes(props) {
             id="button-category"
             type="button"
             data-testid={ `${category.strCategory}-category-filter` }
+            onClick={ fetchRecipesByCategory }
+            value={ category.strCategory }
           >
             {category.strCategory}
           </button>))}
