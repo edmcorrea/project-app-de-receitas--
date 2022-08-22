@@ -1,3 +1,4 @@
+import fetchEndPoint from '../../services/fetchFunction';
 import SEARCH_RECIPES from './actionTypes';
 
 const saveSearchedRecipes = (searchedRecipes) => ({
@@ -6,9 +7,7 @@ const saveSearchedRecipes = (searchedRecipes) => ({
 });
 
 const searchRecipes = (endpoint) => async (dispatch) => {
-  const request = await fetch(endpoint);
-  const data = await request.json();
-  dispatch(saveSearchedRecipes(data));
+  dispatch(saveSearchedRecipes(await fetchEndPoint(endpoint)));
 };
 
 export default searchRecipes;

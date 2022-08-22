@@ -4,15 +4,18 @@ import PropTypes from 'prop-types';
 import RecipeMealCard from '../components/RecipeMealCard';
 import searchRecipes from '../redux/actions';
 import RecipeDrinkCard from '../components/RecipeDrinkCard';
+import fetchEndPoint from '../services/fetchFunction';
 
 function Recipes(props) {
   const { getRecipes, recipes } = props;
-  const [type, setType] = useState('meals');
   const { match: { path } } = props;
+
+  const [type, setType] = useState('meals');
+  const [categoriesRecipes, setCategoriesRecipes] = useState([]);
   const maxRecipesToShow = 12;
-  console.log(props);
 
   useEffect(() => {
+    console.log(type);
     if (path === '/foods') {
       getRecipes('https://www.themealdb.com/api/json/v1/1/search.php?s=');
       setType('meals');
@@ -21,6 +24,27 @@ function Recipes(props) {
       setType('drinks');
     }
   }, []);
+
+  const getFirstFive = (categories) => {
+    const maxCategories = 5;
+    setCategoriesRecipes(categories.filter((_category, index) => index < maxCategories));
+  };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      console.log(type);
+      if (type === 'meals') {
+        const categories = await fetchEndPoint('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+
+        getFirstFive(await categories.meals);
+      } else {
+        const categories = await fetchEndPoint('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+
+        getFirstFive(await categories.drinks);
+      }
+    };
+    fetchCategories();
+  }, [type]);
 
   return (
     <div>
@@ -40,6 +64,18 @@ function Recipes(props) {
               index={ index }
             />);
           })}
+      <div>
+        { categoriesRecipes
+        && categoriesRecipes.map((category) => (
+          <button
+            key={ category.strCategory }
+            id="button-category"
+            type="button"
+            data-testid={ `${category.strCategory}-category-filter` }
+          >
+            {category.strCategory}
+          </button>))}
+      </div>
       <p>Recipes</p>
     </div>
   );
