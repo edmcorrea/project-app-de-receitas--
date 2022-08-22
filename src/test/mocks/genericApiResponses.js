@@ -1,6 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable max-lines */
-/* eslint-disable max-len */
 export const emptyResponse = { meals: null, drinks: null };
 
 export const singleMeal = {
@@ -11,10 +8,10 @@ export const singleMeal = {
       strDrinkAlternate: null,
       strCategory: 'Seafood',
       strArea: 'British',
-      strInstructions: 'Preheat the oven to 200C\/400F\/Gas 6 (180C fan).\r\nPut the potatoes into a saucepan of cold salted water. Bring up to the boil and simmer until completely tender. Drain well and then mash with the butter and milk. Add pepper and taste to check the seasoning. Add salt and more pepper if necessary.\r\nFor the fish filling, melt the butter in a saucepan, add the leeks and stir over the heat. Cover with a lid and simmer gently for 10 minutes, or until soft. Measure the flour into a small bowl. Add the wine and whisk together until smooth.\r\nAdd the milk to the leeks, bring to the boil and then add the wine mixture. Stir briskly until thickened. Season and add the parsley and fish. Stir over the heat for two minutes, then spoon into an ovenproof casserole. Scatter over the eggs. Allow to cool until firm.\r\nSpoon the mashed potatoes over the fish mixture and mark with a fork. Sprinkle with cheese.\r\nBake for 30-40 minutes, or until lightly golden-brown on top and bubbling around the edges.',
-      strMealThumb: 'https:\/\/www.themealdb.com\/images\/media\/meals\/spswqs1511558697.jpg',
+      strInstructions: 'Preheat the oven to 200C/400F/Gas 6 (180C fan)',
+      strMealThumb: 'https://www.themealdb.com/images/media/meals/spswqs151697.jpg',
       strTags: 'Fish,Seafood,Dairy,Pie',
-      strYoutube: 'https:\/\/www.youtube.com\/watch?v=Ds1Jb8H5Sg8',
+      strYoutube: 'https://www.youtube.com/watch?v=Ds1Jb8H5Sg8',
       strIngredient1: 'Potatoes',
       strIngredient2: 'Butter',
       strIngredient3: 'Milk',
@@ -55,7 +52,7 @@ export const singleMeal = {
       strMeasure18: '',
       strMeasure19: '',
       strMeasure20: '',
-      strSource: 'https:\/\/www.bbc.co.uk\/food\/recipes\/three_fish_pie_58875',
+      strSource: 'https://www.bbc.co.uk/food/recipes/three_fish_pie_58875',
       dateModified: null,
     },
   ],
@@ -78,13 +75,13 @@ export const singleDrink = {
       strIBA: null,
       strAlcoholic: 'Alcoholic',
       strGlass: 'Cocktail glass',
-      strInstructions: 'Add all ingredients to a mixing glass and fill with ice.\r\n\r\nStir until chilled, and strain into a chilled coupe glass.',
+      strInstructions: 'Add all ingredients to a mixing glass and fill with ice.',
       strInstructionsES: null,
-      strInstructionsDE: 'Alle Zutaten in ein Mischglas geben und mit Eis f\u00fcllen. Bis zum Abk\u00fchlen umr\u00fchren und in ein gek\u00fchltes Coup\u00e9glas abseihen.',
+      strInstructionsDE: 'Alle Zutaten in ein Mischglas geben und mit Eis f\u00fcllen.',
       strInstructionsFR: null,
       'strInstructionsZH-HANS': null,
       'strInstructionsZH-HANT': null,
-      strDrinkThumb: 'https:\/\/www.thecocktaildb.com\/images\/media\/drink\/fs6kiq1513708455.jpg',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/fs6kiq1513708455.jpg',
       strIngredient1: 'Gin',
       strIngredient2: 'Sweet Vermouth',
       strIngredient3: 'Maraschino Liqueur',
@@ -100,8 +97,8 @@ export const singleDrink = {
       strIngredient13: null,
       strIngredient14: null,
       strIngredient15: null,
-      strMeasure1: '1 1\/2 oz',
-      strMeasure2: '1 1\/2 oz',
+      strMeasure1: '1 1/2 oz',
+      strMeasure2: '1 1/2 oz',
       strMeasure3: '1 tsp',
       strMeasure4: '2 dashes',
       strMeasure5: null,
@@ -247,91 +244,6 @@ export const drinks = {
       strDrink: 'Creme de Menthe',
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/yxswtp1441253918.jpg',
       idDrink: '12808',
-    },
-    {
-      strDrink: 'Gin Toddy',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/jxstwf1582582101.jpg',
-      idDrink: '11420',
-    },
-    {
-      strDrink: 'Gluehwein',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/vuxwvt1468875418.jpg',
-      idDrink: '12944',
-    },
-    {
-      strDrink: 'Iced Coffee',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/ytprxy1454513855.jpg',
-      idDrink: '12770',
-    },
-    {
-      strDrink: 'Jamaican Coffee',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/xqptps1441247257.jpg',
-      idDrink: '15825',
-    },
-    {
-      strDrink: 'Jello shots',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/l0smzo1504884904.jpg',
-      idDrink: '14956',
-    },
-    {
-      strDrink: 'Kill the cold Smoothie',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/7j1z2e1487603414.jpg',
-      idDrink: '12720',
-    },
-    {
-      strDrink: 'Lassi - A South Indian Drink',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/iq6scx1487603980.jpg',
-      idDrink: '12690',
-    },
-    {
-      strDrink: 'Lassi - Sweet',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/9jeifz1487603885.jpg',
-      idDrink: '12696',
-    },
-    {
-      strDrink: 'Lassi Khara',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/m1suzm1487603970.jpg',
-      idDrink: '12692',
-    },
-    {
-      strDrink: 'Lemouroudji',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/eirmo71487603745.jpg',
-      idDrink: '12702',
-    },
-    {
-      strDrink: 'Masala Chai',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/uyrpww1441246384.jpg',
-      idDrink: '12774',
-    },
-    {
-      strDrink: 'Mulled Wine',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/iuwi6h1504735724.jpg',
-      idDrink: '12988',
-    },
-    {
-      strDrink: 'Shark Attack',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/uv96zr1504793256.jpg',
-      idDrink: '16273',
-    },
-    {
-      strDrink: 'Strawberry Shivers',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/9h1vvt1487603404.jpg',
-      idDrink: '12722',
-    },
-    {
-      strDrink: 'Sweet Sangria',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/uqqvsp1468924228.jpg',
-      idDrink: '13024',
-    },
-    {
-      strDrink: 'Thai Iced Tea',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/trvwpu1441245568.jpg',
-      idDrink: '12786',
-    },
-    {
-      strDrink: 'Tia-Maria',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/sih81u1504367097.jpg',
-      idDrink: '12856',
     },
   ],
 };
