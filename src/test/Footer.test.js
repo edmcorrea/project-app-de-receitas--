@@ -1,7 +1,6 @@
 import { screen } from '@testing-library/react';
-
-import renderWithRouter from './helpers/renderWithRouter';
 import Footer from '../components/Footer';
+import { renderWithRouter } from './helpers/renderWith';
 
 describe('Footer Component', () => {
   test('Verifica se os elementos estão sendo renderizados', () => {
