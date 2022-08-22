@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
   return (
     <div className="meals">
       <Switch>
-        a
+        <Route exact path="/" component={ Login } />
       </Switch>
     </div>
   );
