@@ -138,8 +138,11 @@ const mapStateToProps = (store) => ({
 });
 
 SearchBar.propTypes = {
+  isFetching: PropTypes.func.isRequired,
   doSearch: PropTypes.func.isRequired,
+  recipes: PropTypes.func.isRequired,
   history: PropTypes.shape({
+    push: PropTypes.func,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
