@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { searchRecipes } from '../redux/actions';
 
 const SEARCH_ENDPOINTS = {
@@ -16,7 +16,7 @@ const SEARCH_ENDPOINTS = {
   },
 };
 
-function SearchBar({ history }) {
+function SearchBar() {
   const [search, setSearch] = useState({
     text: '',
     searchType: '',
@@ -26,6 +26,7 @@ function SearchBar({ history }) {
   const pathName = useSelector((state) => state.header.pathname);
   const recipes = useSelector((state) => state.recipesReducer.recipes);
   const dispatch = useDispatch();
+  const { push } = useHistory();
 
   useEffect(() => {
     const currentPage = pathName.includes('foods') ? 'foods' : 'drinks';
@@ -44,7 +45,7 @@ function SearchBar({ history }) {
         .concat(recipesObjKey.slice(1, recipesObjKey.length - 1));
       const id = `id${adjustedKey}`;
       if (recipes[recipesObjKey].length === 1) {
-        history.push(`/${page}/${recipes[recipesObjKey][0][id]}`);
+        push(`/${page}/${recipes[recipesObjKey][0][id]}`);
       }
     };
     checkReturnedRecipes();
@@ -118,10 +119,10 @@ function SearchBar({ history }) {
   );
 }
 
-SearchBar.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
-};
+// SearchBar.propTypes = {
+//   history: PropTypes.shape({
+//     push: PropTypes.func,
+//   }).isRequired,
+// };
 
 export default SearchBar;
