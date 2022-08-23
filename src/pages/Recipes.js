@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeDrinkCard from '../components/RecipeDrinkCard';
@@ -28,7 +28,7 @@ function Recipes(props) {
 
   useEffect(() => {
     updateCurrentPath(path);
-  }, []);
+  }, [path]);
 
   const fetchAllRecipes = () => {
     if (path === '/foods') {
