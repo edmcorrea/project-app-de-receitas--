@@ -28,6 +28,7 @@ describe('Profile Component', () => {
     const profileLogoutBtn = screen.getByTestId('profile-logout-btn');
 
     userEvent.click(profileLogoutBtn);
+
     const { location: { pathname } } = history;
     expect(pathname).toBe('/');
   });
