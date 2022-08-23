@@ -1,9 +1,16 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import { nameHeader } from '../redux/actions';
 
-function DoneRecipes() {
+function DoneRecipes(props) {
+  useEffect(() => {
+    const { updateCurrentPath, history } = props;
+    const { location: { pathname } } = history;
+    updateCurrentPath(pathname);
+  }, []);
+
   return (
     <>
       <Header />
@@ -18,6 +25,11 @@ DoneRecipes.propTypes = {
       pathname: PropTypes.string,
     }),
   }).isRequired,
+  updateCurrentPath: PropTypes.func.isRequired,
 };
 
-export default connect()(DoneRecipes);
+const mapDispatchToProps = (dispatch) => ({
+  updateCurrentPath: (pathName) => dispatch(nameHeader(pathName)),
+});
+
+export default connect(null, mapDispatchToProps)(DoneRecipes);
