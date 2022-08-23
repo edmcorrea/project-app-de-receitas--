@@ -12,7 +12,7 @@ function Recipes({ history, dispatch }) {
 
   return (
     <>
-      <Header />
+      <Header history={ history } />
       <p> Recipes </p>
     </>
   );

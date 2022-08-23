@@ -43,5 +43,6 @@ describe('verifica a tela de login', () => {
     userEvent.click(botao);
     const { location: { pathname } } = history;
     expect(pathname).toBe('/foods');
+    screen.logTestingPlaygroundURL();
   });
 });
