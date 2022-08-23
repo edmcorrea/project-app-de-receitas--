@@ -1,7 +1,7 @@
 .sectionRecipesCards {
-  width: 300px;
-  font-size: 0.5rem;
-  gap: 20px;
   display: flex;
   flex-wrap: wrap;
+  font-size: 0.5rem;
+  gap: 20px;
+  width: 300px;
 }
