@@ -7,29 +7,40 @@ import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import fetchEndPoint from '../services/fetchFunction';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import './recipes.css';
 
 function Recipes(props) {
   const { getRecipes, updateCurrentPath, recipes } = props;
   const { match: { path } } = props;
 
   const [type, setType] = useState('meals');
+  const [currentFilter, setCurrentFilter] = useState('All');
   const [categoriesRecipes, setCategoriesRecipes] = useState([]);
   const maxRecipesToShow = 12;
+
+  useEffect(() => {
+    if (path === '/foods') {
+      setType('meals');
+    } else {
+      setType('drinks');
+    }
+  }, [path]);
 
   useEffect(() => {
     updateCurrentPath(path);
   }, []);
 
-  useEffect(() => {
-    console.log(type);
+  const fetchAllRecipes = () => {
     if (path === '/foods') {
       getRecipes('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-      setType('meals');
     } else {
       getRecipes('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-      setType('drinks');
     }
-  }, [type]);
+  };
+
+  useEffect(() => {
+    fetchAllRecipes();
+  }, []);
 
   const getFirstFive = (categories) => {
     const maxCategories = 5;
@@ -39,7 +50,7 @@ function Recipes(props) {
   useEffect(() => {
     const fetchCategories = async () => {
       console.log(type);
-      if (type === 'meals') {
+      if (path === '/foods') {
         const categories = await fetchEndPoint('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
 
         getFirstFive(await categories.meals);
@@ -50,16 +61,53 @@ function Recipes(props) {
       }
     };
     fetchCategories();
-  }, [type]);
+  }, []);
 
-  const fetchRecipesByCategory = ({ target: { value } }) => {
-    console.log(value);
+  const fetchRecipesByCategory = async ({ target: { value } }) => {
+    if (value !== currentFilter) {
+      if (path === '/foods') {
+        const categories = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`;
+
+        getRecipes(categories);
+      } else {
+        const categories = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${value}`;
+
+        getRecipes(categories);
+      }
+      setCurrentFilter(value);
+    } else {
+      fetchAllRecipes();
+    }
   };
 
   return (
-    <div>
+    <div className="recipes">
       <Header />
-      { recipes[type]
+      <div>
+        { categoriesRecipes
+        && categoriesRecipes.map((category) => (
+          <button
+            key={ category.strCategory }
+            id="button-category"
+            type="button"
+            data-testid={ `${category.strCategory}-category-filter` }
+            onClick={ fetchRecipesByCategory }
+            value={ category.strCategory }
+          >
+            {category.strCategory}
+          </button>))}
+        <button
+          onClick={ fetchAllRecipes }
+          type="button"
+          data-testid="All-category-filter"
+          value="All"
+        >
+          All
+
+        </button>
+      </div>
+      <section className="sectionRecipesCards">
+        { recipes[type]
         && recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
           .map((recipe, index) => {
             if (type === 'meals') {
@@ -75,20 +123,7 @@ function Recipes(props) {
               index={ index }
             />);
           })}
-      <div>
-        { categoriesRecipes
-        && categoriesRecipes.map((category) => (
-          <button
-            key={ category.strCategory }
-            id="button-category"
-            type="button"
-            data-testid={ `${category.strCategory}-category-filter` }
-            onClick={ fetchRecipesByCategory }
-            value={ category.strCategory }
-          >
-            {category.strCategory}
-          </button>))}
-      </div>
+      </section>
       <Footer />
     </div>
   );
