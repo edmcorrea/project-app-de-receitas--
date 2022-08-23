@@ -119,10 +119,4 @@ function SearchBar() {
   );
 }
 
-// SearchBar.propTypes = {
-//   history: PropTypes.shape({
-//     push: PropTypes.func,
-//   }).isRequired,
-// };
-
 export default SearchBar;
