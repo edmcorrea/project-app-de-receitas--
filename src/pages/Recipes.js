@@ -8,7 +8,7 @@ function Recipes() {
   return (
     <>
       <Header />
-      <p> Recipes </p>
+      <p> Recipes!! </p>
       <Footer />
     </>
   );
