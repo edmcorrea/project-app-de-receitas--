@@ -66,7 +66,7 @@ function FavoriteButton({ currentProduct }) {
 }
 
 FavoriteButton.propTypes = {
-  currentProduct: PropTypes.shape(PropTypes.object).isRequired,
+  currentProduct: PropTypes.shape(PropTypes.shape).isRequired,
 };
 
 export default FavoriteButton;
