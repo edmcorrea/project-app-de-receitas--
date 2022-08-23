@@ -1,7 +1,5 @@
 import fetchEndPoint from '../../services/fetchFunction';
-import { CHANGE_FETCH_STATUS, SEARCH_RECIPES } from './actionTypes';
-
-export const NAME_HEADER = 'NAME_HEADER';
+import { CHANGE_FETCH_STATUS, NAME_HEADER, SEARCH_RECIPES } from './actionTypes';
 
 export const nameHeader = (pathname) => ({
   type: NAME_HEADER,

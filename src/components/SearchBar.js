@@ -16,7 +16,7 @@ const SEARCH_ENDPOINTS = {
   },
 };
 
-function SearchBar({ doSearch, history, recipes, isFetching }) {
+function SearchBar({ doSearch, history, recipes, isFetching, pathname }) {
   const [search, setSearch] = useState({
     text: '',
     searchType: '',
@@ -25,7 +25,6 @@ function SearchBar({ doSearch, history, recipes, isFetching }) {
   const [waitFetch, setWaitFetch] = useState(true);
 
   useEffect(() => {
-    const { location: { pathname } } = history;
     const currentPage = pathname.includes('foods') ? 'foods' : 'drinks';
     setPage(currentPage);
   }, [history]);
@@ -63,15 +62,6 @@ function SearchBar({ doSearch, history, recipes, isFetching }) {
 
   return (
     <form>
-      {/* {botão apenas para os testes} */}
-      <button
-        type="button"
-        data-testid="search-top-btn"
-        onClick={ (e) => e.preventDefault() }
-      >
-        click
-
-      </button>
       <input
         type="text"
         placeholder="Search recipe"
@@ -135,18 +125,22 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (store) => ({
   recipes: store.recipesReducer.recipes,
   isFetching: store.recipesReducer.isFetching,
+  pathname: store.header.pathname,
 });
 
 SearchBar.propTypes = {
-  isFetching: PropTypes.func.isRequired,
   doSearch: PropTypes.func.isRequired,
-  recipes: PropTypes.func.isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
+    push: PropTypes.func,
   }).isRequired,
+  isFetching: PropTypes.func.isRequired,
+  pathname: PropTypes.shape({
+    includes: PropTypes.func,
+  }).isRequired,
+  recipes: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

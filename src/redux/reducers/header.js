@@ -1,4 +1,4 @@
-import { NAME_HEADER } from '../actions';
+import { NAME_HEADER } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   pathname: '',
