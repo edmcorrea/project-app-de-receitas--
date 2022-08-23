@@ -1,4 +1,4 @@
-import SEARCH_RECIPES, { CHANGE_FETCH_STATUS } from '../actions/actionTypes';
+import { CHANGE_FETCH_STATUS, SEARCH_RECIPES } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   recipes: [],

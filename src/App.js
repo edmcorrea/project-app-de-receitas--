@@ -14,11 +14,11 @@ function App() {
     <div className="meals">
       <Switch>
         <Route
-          path="/foods/{id-da-receita}/in-progress"
+          path="/foods/:idRecipe/in-progress"
           component={ RecipeInProgress }
         />
         <Route
-          path="/foods/{id-da-receita}"
+          path="/foods/:idRecipe"
           component={ RecipeDetails }
         />
         <Route
@@ -27,11 +27,11 @@ function App() {
           component={ Recipes }
         />
         <Route
-          path="/drinks/{id-da-receita}/in-progress"
+          path="/drinks/:idRecipe/in-progress"
           component={ RecipeInProgress }
         />
         <Route
-          path="/drinks/{id-da-receita}"
+          path="/drinks/:idRecipe"
           component={ RecipeDetails }
         />
         <Route
