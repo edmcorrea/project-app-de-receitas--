@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
-function Header({ pathname }, history) {
+function Header({ pathname }) {
   const [nameHeader, setNameHeader] = useState('');
   const [showIcon, setshowIcon] = useState(true);
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -49,18 +49,12 @@ function Header({ pathname }, history) {
           <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>
       )}
-      {(showSearchBar) && <SearchBar history={ history } data-testid="search-input" /> }
+      {(showSearchBar) && <SearchBar data-testid="search-input" /> }
     </>
   );
 }
 
 Header.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
-  }).isRequired,
   pathname: PropTypes.string.isRequired,
 };
 
