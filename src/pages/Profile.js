@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { nameHeader } from '../redux/actions';
 
@@ -14,6 +15,7 @@ function Profile({ history, dispatch }) {
     <>
       <Header />
       <p> Profile </p>
+      <Footer />
     </>
   );
 }

@@ -9,7 +9,6 @@ import RecipeInProgress from './pages/RecipeInProgress';
 import DoneRecipes from './pages/DoneRecipes';
 import RecipeDetails from './pages/RecipeDetails';
 
-
 function App() {
   return (
     <div className="meals">
@@ -23,6 +22,7 @@ function App() {
           component={ RecipeDetails }
         />
         <Route
+          exact
           path="/foods"
           component={ Recipes }
         />
@@ -35,6 +35,7 @@ function App() {
           component={ RecipeDetails }
         />
         <Route
+          exact
           path="/drinks"
           component={ Recipes }
         />

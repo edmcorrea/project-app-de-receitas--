@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import searchRecipes from '../redux/actions';
+import { searchRecipes } from '../redux/actions';
 
 const SEARCH_ENDPOINTS = {
   foods: {
