@@ -1,9 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
-import mockDrinksRecipes from './mocks/mocksRecipes';
 import mockCategoriesDrinks from './mocks/mockCategoriesDrink';
 
 describe('Testa a página Recipes', () => {

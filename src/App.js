@@ -22,6 +22,7 @@ function App() {
           component={ RecipeDetails }
         />
         <Route
+          exact
           path="/foods"
           component={ Recipes }
         />
@@ -34,6 +35,7 @@ function App() {
           component={ RecipeDetails }
         />
         <Route
+          exact
           path="/drinks"
           component={ Recipes }
         />
