@@ -130,8 +130,8 @@ function Recipes(props) {
 }
 
 Recipes.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  match: PropTypes.objectOf(PropTypes.shape).isRequired,
   getRecipes: PropTypes.func.isRequired,
   updateCurrentPath: PropTypes.func.isRequired,
   history: PropTypes.shape(PropTypes.shape).isRequired,

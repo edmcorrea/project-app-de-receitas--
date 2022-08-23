@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import SEARCH_RECIPES from '../actions/actionTypes';
-=======
-import { CHANGE_FETCH_STATUS, SEARCH_RECIPES } from '../actions/actionTypes';
->>>>>>> main-group-22
 
 const INITIAL_STATE = {
   recipes: [],
