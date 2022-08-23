@@ -121,9 +121,6 @@ function SearchBar({ history }) {
 SearchBar.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
   }).isRequired,
 };
 
