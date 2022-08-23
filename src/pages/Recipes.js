@@ -28,7 +28,7 @@ function Recipes(props) {
 
   useEffect(() => {
     updateCurrentPath(path);
-  }, []);
+  }, [path]);
 
   const fetchAllRecipes = () => {
     if (path === '/foods') {
@@ -40,7 +40,7 @@ function Recipes(props) {
 
   useEffect(() => {
     fetchAllRecipes();
-  }, []);
+  }, [type]);
 
   const getFirstFive = (categories) => {
     const maxCategories = 5;
@@ -61,7 +61,7 @@ function Recipes(props) {
       }
     };
     fetchCategories();
-  }, []);
+  }, [type]);
 
   const fetchRecipesByCategory = async ({ target: { value } }) => {
     if (value !== currentFilter) {
