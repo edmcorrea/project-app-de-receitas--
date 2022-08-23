@@ -1,4 +1,5 @@
 import SEARCH_RECIPES, { CHANGE_FETCH_STATUS } from './actionTypes';
+
 export const NAME_HEADER = 'NAME_HEADER';
 
 export const nameHeader = (pathname) => ({

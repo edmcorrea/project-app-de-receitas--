@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { nameHeader } from '../redux/actions';
 
-function FavoriteRecipes({ history, dispatch }) {
-  useEffect(() => {
-    const { location: { pathname } } = history;
-    dispatch(nameHeader(pathname));
-  }, []);
-
+function FavoriteRecipes() {
   return (
     <>
       <Header />
@@ -19,7 +13,6 @@ function FavoriteRecipes({ history, dispatch }) {
 }
 
 FavoriteRecipes.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,

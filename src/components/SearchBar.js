@@ -28,7 +28,7 @@ function SearchBar({ doSearch, history, recipes, isFetching }) {
     const { location: { pathname } } = history;
     const currentPage = pathname.includes('foods') ? 'foods' : 'drinks';
     setPage(currentPage);
-  });
+  }, [history]);
 
   useEffect(() => setWaitFetch(isFetching), [isFetching]);
 
@@ -49,7 +49,7 @@ function SearchBar({ doSearch, history, recipes, isFetching }) {
       }
     };
     checkReturnedRecipes();
-  }, [waitFetch]);
+  }, [waitFetch, history, page, recipes]);
 
   const handleSearch = () => {
     const { text, searchType } = search;
