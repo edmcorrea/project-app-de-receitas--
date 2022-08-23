@@ -61,7 +61,7 @@ class Login extends React.Component {
         Senha:
         <input
           data-testid="password-input"
-          type="text"
+          type="password"
           name="password"
           onChange={ this.handleImput }
           value={ password }
