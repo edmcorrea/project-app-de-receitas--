@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { searchRecipes } from '../redux/actions';
 
 const SEARCH_ENDPOINTS = {
@@ -16,26 +16,26 @@ const SEARCH_ENDPOINTS = {
   },
 };
 
-function SearchBar({ doSearch, history, recipes, isFetching, pathname }) {
+function SearchBar({ history }) {
   const [search, setSearch] = useState({
     text: '',
     searchType: '',
   });
   const [page, setPage] = useState('foods');
-  const [waitFetch, setWaitFetch] = useState(true);
+
+  const pathName = useSelector((state) => state.header.pathname);
+  const recipes = useSelector((state) => state.recipesReducer.recipes);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const currentPage = pathname.includes('foods') ? 'foods' : 'drinks';
+    const currentPage = pathName.includes('foods') ? 'foods' : 'drinks';
     setPage(currentPage);
-  }, [history]);
-
-  useEffect(() => setWaitFetch(isFetching), [isFetching]);
+  }, [pathName]);
 
   useEffect(() => {
     const checkReturnedRecipes = () => {
-      if (waitFetch) return;
       const recipesObjKey = page === 'foods' ? 'meals' : 'drinks';
-      console.log(page);
+      if (recipes[recipesObjKey] === undefined) return;
       if (recipes[recipesObjKey] === null) {
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
         return;
@@ -48,7 +48,7 @@ function SearchBar({ doSearch, history, recipes, isFetching, pathname }) {
       }
     };
     checkReturnedRecipes();
-  }, [waitFetch, history, page, recipes]);
+  }, [recipes]);
 
   const handleSearch = () => {
     const { text, searchType } = search;
@@ -57,7 +57,7 @@ function SearchBar({ doSearch, history, recipes, isFetching, pathname }) {
       return;
     }
     const endpoint = SEARCH_ENDPOINTS[page][searchType].concat(text);
-    doSearch(endpoint);
+    dispatch(searchRecipes(endpoint));
   };
 
   return (
@@ -118,29 +118,10 @@ function SearchBar({ doSearch, history, recipes, isFetching, pathname }) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  doSearch: (endpoint) => dispatch(searchRecipes(endpoint)),
-});
-
-const mapStateToProps = (store) => ({
-  recipes: store.recipesReducer.recipes,
-  isFetching: store.recipesReducer.isFetching,
-  pathname: store.header.pathname,
-});
-
 SearchBar.propTypes = {
-  doSearch: PropTypes.func.isRequired,
   history: PropTypes.shape({
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
     push: PropTypes.func,
   }).isRequired,
-  isFetching: PropTypes.func.isRequired,
-  pathname: PropTypes.shape({
-    includes: PropTypes.func,
-  }).isRequired,
-  recipes: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default SearchBar;

@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import './recipeCard.css';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import './recipeCard.css';
 
 export default function RecipeMealCard(props) {
   const { recipe: { strMealThumb, strMeal, idMeal }, index } = props;
@@ -35,6 +35,6 @@ export default function RecipeMealCard(props) {
 }
 
 RecipeMealCard.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
   index: PropTypes.number.isRequired,
 };

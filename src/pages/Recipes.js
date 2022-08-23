@@ -1,17 +1,17 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import RecipeMealCard from '../components/RecipeMealCard';
 import { nameHeader, searchRecipes } from '../redux/actions';
-import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import fetchEndPoint from '../services/fetchFunction';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import './recipes.css';
 
 function Recipes(props) {
   const { getRecipes, updateCurrentPath, recipes } = props;
-  const { match: { path } } = props;
+  const { match: { path }, history } = props;
 
   const [type, setType] = useState('meals');
   const [currentFilter, setCurrentFilter] = useState('All');
@@ -82,7 +82,7 @@ function Recipes(props) {
 
   return (
     <div className="recipes">
-      <Header />
+      <Header history={ history } />
       <div>
         { categoriesRecipes
         && categoriesRecipes.map((category) => (
@@ -130,10 +130,11 @@ function Recipes(props) {
 }
 
 Recipes.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.any).isRequired,
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  match: PropTypes.objectOf(PropTypes.shape).isRequired,
   getRecipes: PropTypes.func.isRequired,
   updateCurrentPath: PropTypes.func.isRequired,
+  history: PropTypes.shape(PropTypes.shape).isRequired,
 };
 
 const mapStateToProps = (state) => ({
