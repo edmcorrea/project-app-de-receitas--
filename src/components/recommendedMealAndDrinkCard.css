@@ -1,0 +1,14 @@
+.recommendedCards {
+  display: flex;
+  width: 220px;
+  overflow-x: auto;
+}
+
+.recommendedCards img {
+  width: 120px;
+  height: 100px;
+}
+
+.recommendedCard {
+  width: 50%;
+}
