@@ -16,8 +16,14 @@ function RecipeDetails() {
   const [measures, setMeasures] = useState([]);
   const [recomendedRecipes, setRecomendedRecipes] = useState([]);
   const [isThisRecipeDone, setIsThisRecipeDone] = useState(false);
+  const [isThisRecipeStarted, setIsThisRecipeStarted] = useState(false);
   const { params: { idRecipe }, path } = useRouteMatch();
   const sixRecipes = 6;
+
+  const currentPath = () => {
+    if (path.includes('foods')) return 'meals';
+    return 'cocktails';
+  };
 
   // Busca a receita usando o id no path
   useEffect(() => {
@@ -80,6 +86,16 @@ function RecipeDetails() {
     }
   }, []);
 
+  useEffect(() => {
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    console.log(`Receitas em progresso${inProgressRecipes}`);
+
+    if (inProgressRecipes !== null
+      && Object.keys(inProgressRecipes[currentPath()]).includes(idRecipe)) {
+      setIsThisRecipeStarted(true);
+    }
+  }, []);
+
   return (
     <div>
       { recipe && (path.includes('foods') ? (
@@ -113,7 +129,7 @@ function RecipeDetails() {
           className="startRecipe"
           data-testid="start-recipe-btn"
         >
-          Start Recipe
+          { isThisRecipeStarted ? 'Continue Recipe' : 'Start Recipe'}
         </button>
       )}
 
