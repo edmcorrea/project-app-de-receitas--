@@ -1,12 +1,13 @@
 .recommendedCards {
   display: flex;
-  width: 220px;
+  margin-bottom: 30px;
   overflow-x: auto;
+  width: 220px;
 }
 
 .recommendedCards img {
-  width: 120px;
   height: 100px;
+  width: 120px;
 }
 
 .recommendedCard {

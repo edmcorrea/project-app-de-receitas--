@@ -1,9 +1,32 @@
+.recipe-details {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+}
+
+.detailCard {
+  height: auto;
+  padding: 10px;
+  width: 95vw;
+}
+
 .detailCard img {
-  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  width: 90vw;
 }
 
 .startRecipe {
+  bottom: 0;
   position: fixed;
-  left: 200px;
-  bottom: 0px;
+}
+
+.buttons {
+  margin: 0 auto;
+}
+
+.video {
+  width: 95vw;
 }

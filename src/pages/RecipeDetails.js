@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import DrinkRecipeRecommendedCard from '../components/DrinkRecipeRecommendedCard';
+import FavoriteButton from '../components/FavoriteButton';
 import MealRecipeRecommendedCard from '../components/MealRecipeRecommendedCard';
 import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
+import ShareButton from '../components/ShareButton';
 import fetchEndPoint from '../services/fetchFunction';
 import './recipeDetails.css';
-import ShareButton from '../components/ShareButton';
-import FavoriteButton from '../components/FavoriteButton';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
@@ -70,7 +70,12 @@ function RecipeDetails() {
       index < sixRecipes)));
 
   return (
-    <div>
+    <div className="recipe-details">
+      <div className="buttons">
+        <ShareButton />
+        {/* Botão de favoritar precisa receber via props o produto atual */}
+        <FavoriteButton currentProduct={ recipe } />
+      </div>
       { recipe && (path.includes('foods') ? (
         <RecipeDetailMealCard
           recipe={ recipe }
@@ -84,9 +89,6 @@ function RecipeDetails() {
             measures={ measures }
           />)
       )}
-      <ShareButton />
-      {/* Botão de favoritar precisa receber via props o produto atual */}
-      <FavoriteButton currentProduct={ recipe } />
       {
         recomendedRecipes && (path.includes('/foods') ? <DrinkRecipeRecommendedCard
           recommendedRecipes={ getFirstSixRecipes() }
