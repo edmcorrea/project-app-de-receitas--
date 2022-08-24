@@ -1,0 +1,9 @@
+.detailCard img {
+  width: 400px;
+}
+
+.startRecipe {
+  position: fixed;
+  left: 200px;
+  bottom: 0px;
+}
