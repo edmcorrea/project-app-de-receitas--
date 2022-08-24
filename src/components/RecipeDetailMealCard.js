@@ -42,6 +42,6 @@ const shapeRecipe = {
 
 RecipeDetailMealCard.propTypes = {
   recipe: PropTypes.shape(shapeRecipe).isRequired,
-  ingredients: PropTypes.shape(PropTypes.array).isRequired,
-  measures: PropTypes.shape(PropTypes.array).isRequired,
+  ingredients: PropTypes.shape().isRequired,
+  measures: PropTypes.shape().isRequired,
 };
