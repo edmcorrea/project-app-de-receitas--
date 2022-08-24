@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import './recommendedMealAndDrinkCard.css';
 
 export default function DrinkRecipeRecommendedCard({ recommendedRecipes }) {
@@ -26,5 +26,5 @@ export default function DrinkRecipeRecommendedCard({ recommendedRecipes }) {
 }
 
 DrinkRecipeRecommendedCard.propTypes = {
-  recommendedRecipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  recommendedRecipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };

@@ -34,8 +34,8 @@ export default function RecipeDetailMealCard({ recipe, ingredients, measures }) 
   );
 }
 
-RecipeDetailMealCard.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
-  ingredients: PropTypes.arrayOf(PropTypes.array).isRequired,
-  measures: PropTypes.arrayOf(PropTypes.array).isRequired,
+RecipeDetailDrinkCard.propTypes = {
+  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  measures: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
 };
