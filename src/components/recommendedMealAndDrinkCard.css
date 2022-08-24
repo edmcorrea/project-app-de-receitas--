@@ -1,15 +1,18 @@
 .recommendedCards {
-  display: flex;
-  margin-bottom: 30px;
-  overflow-x: auto;
-  width: 220px;
+  gap: 10px;
+  overflow-x: scroll;
+  width: 200px;
 }
 
 .recommendedCards img {
-  height: 100px;
-  width: 120px;
+  height: 90px;
+  width: 100px;
 }
 
 .recommendedCard {
-  width: 50%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
 }

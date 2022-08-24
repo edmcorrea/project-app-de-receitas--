@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .recipe-details {
   align-items: center;
   display: flex;
@@ -16,10 +17,22 @@
   margin: 0 auto;
   padding: 0;
   width: 90vw;
+=======
+.recipeDetails {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
+.detailCard img {
+  width: 200px;
+>>>>>>> main-group-22-release
 }
 
 .startRecipe {
   bottom: 0;
+<<<<<<< HEAD
   position: fixed;
 }
 
@@ -30,3 +43,8 @@
 .video {
   width: 95vw;
 }
+=======
+  left: 200px;
+  position: fixed;
+}
+>>>>>>> main-group-22-release

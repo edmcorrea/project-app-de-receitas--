@@ -25,5 +25,5 @@ export default function MealRecipeRecommendedCard({ recommendedRecipes }) {
 }
 
 MealRecipeRecommendedCard.propTypes = {
-  recommendedRecipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  recommendedRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
