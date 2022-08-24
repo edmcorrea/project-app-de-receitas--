@@ -7,6 +7,8 @@ import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
 import fetchEndPoint from '../services/fetchFunction';
 import './recipeDetails.css';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
@@ -98,6 +100,9 @@ function RecipeDetails() {
       >
         Start Recipe
       </button>
+      <ShareButton />
+      {/* Botão de favoritar precisa receber via props o produto atual */}
+      <FavoriteButton currentProduct={ currentProduct } />
     </div>
   );
 }
