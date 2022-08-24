@@ -1,4 +1,6 @@
 .recommendedCards {
+  align-items: center;
+  display: flex;
   gap: 10px;
   overflow-x: scroll;
   width: 200px;
