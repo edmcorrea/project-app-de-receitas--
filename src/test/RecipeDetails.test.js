@@ -1,39 +1,41 @@
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
 import React from 'react';
-import ShareButton from '../components/ShareButton';
+import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
-
-const copy = require('clipboard-copy');
-
-jest.mock('clipboard-copy');
+import { singleDrink, singleMeal } from './mocks/genericApiResponses';
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
 describe('A página de detalhes de uma receita', () => {
-  it(`Possui um botão para compartilhar a receita que, ao ser clicado,
-  copia a URL atual e mostra mensagem de link copiado`,
-  () => {
-    jest.useFakeTimers();
-    const COPY_MESSAGE_TIMEOUT = 2000;
+  it(`Faz uma requisição para os endpoints corretos quando o caminho
+   é /foods`, async () => {
+    global.fetch = jest.fn(async () => ({
+      json: async () => singleMeal,
+    }));
 
-    renderWithRouterAndRedux(<ShareButton />);
+    const { history } = renderWithRouterAndRedux(<App />);
+    await waitFor(() => history.push('/foods/52882'));
 
-    const shareButton = screen.getByTestId('share-btn');
+    expect(fetch).toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenNthCalledWith(1, 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52882');
+    expect(fetch).toHaveBeenNthCalledWith(2, 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+  });
 
-    expect(shareButton).toBeInTheDocument();
+  it(`Faz uma requisição para os endpoints corretos quando o caminho
+  é /drinks`, async () => {
+    global.fetch = jest.fn(async () => ({
+      json: async () => singleDrink,
+    }));
 
-    userEvent.click(shareButton);
+    const { history } = renderWithRouterAndRedux(<App />);
+    await waitFor(() => history.push('/drinks/17256'));
 
-    const copyMessage = screen.getByText(/link copied!/i);
-
-    expect(copyMessage).toBeInTheDocument();
-    expect(copy).toHaveBeenCalled();
-    expect(copy).toHaveBeenCalledTimes(1);
-    expect(copy).toHaveBeenCalledWith('http://localhost/');
-    jest.advanceTimersByTime(COPY_MESSAGE_TIMEOUT);
-    expect(copyMessage).not.toBeInTheDocument();
+    expect(fetch).toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenNthCalledWith(1, 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=17256');
+    expect(fetch).toHaveBeenNthCalledWith(2, 'https://www.themealdb.com/api/json/v1/1/search.php?s=');
   });
 });
