@@ -84,6 +84,9 @@ function RecipeDetails() {
             measures={ measures }
           />)
       )}
+      <ShareButton />
+      {/* Botão de favoritar precisa receber via props o produto atual */}
+      <FavoriteButton currentProduct={ recipe } />
       {
         recomendedRecipes && (path.includes('/foods') ? <DrinkRecipeRecommendedCard
           recommendedRecipes={ getFirstSixRecipes() }
@@ -100,9 +103,6 @@ function RecipeDetails() {
       >
         Start Recipe
       </button>
-      <ShareButton />
-      {/* Botão de favoritar precisa receber via props o produto atual */}
-      <FavoriteButton currentProduct={ currentProduct } />
     </div>
   );
 }
