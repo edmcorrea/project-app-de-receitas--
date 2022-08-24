@@ -15,9 +15,11 @@ function RecipeDetails() {
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
   const [recomendedRecipes, setRecomendedRecipes] = useState([]);
+  const [isThisRecipeDone, setIsThisRecipeDone] = useState(false);
   const { params: { idRecipe }, path } = useRouteMatch();
   const sixRecipes = 6;
 
+  // Busca a receita usando o id no path
   useEffect(() => {
     const fetchRecipe = async () => {
       if (path.includes('foods')) {
@@ -34,8 +36,8 @@ function RecipeDetails() {
   },
   []);
 
+  // Busca as receitas usando endpoints fixos para usar nas recomendações
   useEffect(() => {
-    console.log(path);
     const getMealsRecipes = async () => {
       const recipes = await fetchEndPoint('https://www.themealdb.com/api/json/v1/1/search.php?s=');
       setRecomendedRecipes(await recipes.meals);
@@ -69,6 +71,15 @@ function RecipeDetails() {
     recomendedRecipes.filter((_recomendedRecipe, index) => (
       index < sixRecipes)));
 
+  useEffect(() => {
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneRecipes) {
+      doneRecipes.forEach((doneRecipe) => {
+        if (doneRecipe.id === idRecipe) setIsThisRecipeDone(true);
+      });
+    }
+  }, []);
+
   return (
     <div>
       { recipe && (path.includes('foods') ? (
@@ -96,13 +107,16 @@ function RecipeDetails() {
               recommendedRecipes={ getFirstSixRecipes() }
             />))
       }
-      <button
-        type="button"
-        className="startRecipe"
-        data-testid="start-recipe-btn"
-      >
-        Start Recipe
-      </button>
+      { !isThisRecipeDone && (
+        <button
+          type="button"
+          className="startRecipe"
+          data-testid="start-recipe-btn"
+        >
+          Start Recipe
+        </button>
+      )}
+
     </div>
   );
 }
