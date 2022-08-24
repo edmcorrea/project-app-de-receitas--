@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Header from '../components/Header';
 import DoneRecipeCard from '../components/DoneRecipeCard';
+
+import './DoneRecipes.css';
 
 // doneRecipes -> Mock para preencher as informações do Componente
 const doneRecipes = [
@@ -31,20 +33,54 @@ const doneRecipes = [
 ];
 
 function DoneRecipes(props) {
+  const [type, setType] = useState('');
   const { history } = props;
 
-  return (
-    <>
-      <Header history={ history } />
-      <p> DoneRecipes </p>
-      <button data-testid="filter-by-all-btn" type="button">All</button>
-      <button data-testid="filter-by-food-btn" type="button">Food</button>
-      <button data-testid="filter-by-drink-btn" type="button">Drinks</button>
+  const filterRecipes = ({ target }) => {
+    if (target.name === 'all') {
+      setType('all');
+      return;
+    }
+    const value = target.name === 'food' ? 'drink' : 'food';
+    setType(value);
+  };
 
-      {doneRecipes.map((recipe, index) => (
-        <DoneRecipeCard key={ recipe.id } recipe={ recipe } index={ index } />
-      ))}
-    </>
+  return (
+    <div className="container-done-recipes">
+      <Header history={ history } />
+      <button
+        onClick={ filterRecipes }
+        data-testid="filter-by-all-btn"
+        name="all"
+        type="button"
+      >
+        All
+      </button>
+      <button
+        onClick={ filterRecipes }
+        data-testid="filter-by-food-btn"
+        name="food"
+        type="button"
+      >
+        Food
+      </button>
+      <button
+        onClick={ filterRecipes }
+        data-testid="filter-by-drink-btn"
+        name="drink"
+        type="button"
+      >
+        Drinks
+      </button>
+
+      <div className="container-card">
+        {doneRecipes
+          .filter((recipe) => recipe.type !== type)
+          .map((recipe, index) => (
+            <DoneRecipeCard key={ recipe.id } recipe={ recipe } index={ index } />
+          ))}
+      </div>
+    </div>
   );
 }
 

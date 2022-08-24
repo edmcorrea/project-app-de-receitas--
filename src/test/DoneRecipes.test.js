@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 
 import DoneRecipes from '../pages/DoneRecipes';
@@ -14,5 +15,9 @@ describe('DoneRecipes Component', () => {
     expect(filterByAllBtn).toBeInTheDocument();
     expect(filterByFoodBtn).toBeInTheDocument();
     expect(filterByDrinkBtn).toBeInTheDocument();
+
+    userEvent.click(filterByAllBtn);
+    userEvent.click(filterByFoodBtn);
+    userEvent.click(filterByDrinkBtn);
   });
 });
