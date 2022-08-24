@@ -27,8 +27,8 @@ const arrFavoriteRecipes = [
 ];
 
 function FavoriteRecipes(props) {
-  const [filterAll, setFilterAll] = useState(false);
-  const [typeFood, setTypeFood] = useState('food');
+  const [filterAll, setFilterAll] = useState(true);
+  const [typeFood, setTypeFood] = useState('');
   useEffect(() => {
     const { updateCurrentPath, history } = props;
     const { location: { pathname } } = history;
@@ -41,7 +41,7 @@ function FavoriteRecipes(props) {
       <button
         type="button"
         data-testid="filter-by-all-btn"
-        onClick={ () => setFilterAll(false) }
+        onClick={ () => setFilterAll(true) }
       >
         All
       </button>
@@ -49,7 +49,7 @@ function FavoriteRecipes(props) {
         type="button"
         data-testid="filter-by-food-btn"
         onClick={ () => {
-          setFilterAll(true);
+          setFilterAll(false);
           setTypeFood('food');
         } }
       >
@@ -59,77 +59,37 @@ function FavoriteRecipes(props) {
         type="button"
         data-testid="filter-by-drink-btn"
         onClick={ () => {
-          setFilterAll(true);
+          setFilterAll(false);
           setTypeFood('drink');
         } }
       >
         Drinks
       </button>
-      {filterAll ? (
-        arrFavoriteRecipes.map((favorite) => (
-          (favorite.type === typeFood)
-            ? (
-              <div key={ favorite.id }>
-                <img
-                  src={ favorite.image }
-                  alt={ favorite.name }
-                  data-testid="0-horizontal-image"
-                />
-                <p
-                  data-testid="0-horizontal-top-text"
-                >
-                  {(favorite.type === 'food')
-                    ? `${favorite.nationality} - ${favorite.category}`
-                    : favorite.alcoholicOrNot}
+      {arrFavoriteRecipes.map((favorite, index) => (
+        <div key={ index }>
+          {(typeFood === favorite.type || filterAll) && (
+            <div key={ favorite.id }>
+              <img
+                src={ favorite.image }
+                alt={ favorite.name }
+                data-testid={ `${index}-horizontal-image` }
+              />
+              <p
+                data-testid={ `${index}-horizontal-top-text` }
+              >
+                {(favorite.type === 'food')
+                  ? `${favorite.nationality} - ${favorite.category}`
+                  : favorite.alcoholicOrNot}
 
-                </p>
-                <p data-testid="0-horizontal-name">{favorite.name}</p>
-                <p data-testid="0-horizontal-share-btn">shareBtn</p>
-                <p data-testid="0-horizontal-favorite-btn">favoriteBtn</p>
-              </div>
-            ) : (
-              <div key={ favorite.id }>
-                <img
-                  src={ favorite.image }
-                  alt={ favorite.name }
-                  data-testid="0-horizontal-image"
-                />
-                <p
-                  data-testid="0-horizontal-top-text"
-                >
-                  {(favorite.type === 'food')
-                    ? `${favorite.nationality} - ${favorite.category}`
-                    : favorite.alcoholicOrNot}
+              </p>
+              <p data-testid={ `${index}-horizontal-name` }>{favorite.name}</p>
+              <p data-testid={ `${index}-horizontal-share-btn` }>shareBtn</p>
+              <p data-testid={ `${index}-horizontal-favorite-btn` }>favoriteBtn</p>
+            </div>
+          )}
+        </div>
 
-                </p>
-                <p data-testid="0-horizontal-name">{favorite.name}</p>
-                <p data-testid="0-horizontal-share-btn">shareBtn</p>
-                <p data-testid="0-horizontal-favorite-btn">favoriteBtn</p>
-              </div>
-            )
-        ))
-      ) : (
-        arrFavoriteRecipes.map((favorite) => (
-          <div key={ favorite.id }>
-            <img
-              src={ favorite.image }
-              alt={ favorite.name }
-              data-testid="0-horizontal-image"
-            />
-            <p
-              data-testid="0-horizontal-top-text"
-            >
-              {(favorite.type === 'food')
-                ? `${favorite.nationality} - ${favorite.category}`
-                : favorite.alcoholicOrNot}
-
-            </p>
-            <p data-testid="0-horizontal-name">{favorite.name}</p>
-            <p data-testid="0-horizontal-share-btn">shareBtn</p>
-            <p data-testid="0-horizontal-favorite-btn">favoriteBtn</p>
-          </div>
-        ))
-      )}
+      ))}
     </>
   );
 }
