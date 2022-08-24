@@ -103,7 +103,7 @@ function RecipeDetails() {
   };
 
   return (
-    <div>
+    <div className="recipeDetails">
       { recipe && (path.includes('foods') ? (
         <RecipeDetailMealCard
           recipe={ recipe }

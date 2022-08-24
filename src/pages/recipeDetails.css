@@ -1,5 +1,12 @@
+.recipeDetails {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
 .detailCard img {
-  width: 400px;
+  width: 200px;
 }
 
 .startRecipe {
