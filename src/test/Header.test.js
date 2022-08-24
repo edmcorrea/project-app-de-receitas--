@@ -1,9 +1,9 @@
-import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithRouterAndRedux } from './helpers/renderWith';
-import Header from '../components/Header';
+import React from 'react';
 import App from '../App';
+import Header from '../components/Header';
+import { renderWithRouterAndRedux } from './helpers/renderWith';
 
 describe('Header Components', () => {
   test('Verifica se os elementos estão sendo renderizados', () => {
@@ -45,32 +45,29 @@ describe('Click Events in Header', () => {
 });
 
 describe('Verificação das rotas', () => {
-  // beforeEach(() => {
-
-  // });
-
-  test('Verifica se ao modificar a rota para -/drinks- o título é modificado', () => {
+  test('Verifica se os títulos aparecem de acordo com as rotas', async () => {
     const { history } = renderWithRouterAndRedux(<App />);
-    const email = screen.getByTestId('email-input');
-    const senha = screen.getByTestId('password-input');
-    const botao = screen.getByRole('button', { name: /entrar/i });
 
-    userEvent.type(email, 'teste@teste.com');
-    userEvent.type(senha, 'abcdefg');
-    userEvent.click(botao);
+    await waitFor(() => history.push('/foods'));
+    const headerFoods = screen.getByRole('heading', { name: /foods/i, level: 2 });
+    expect(headerFoods).toBeInTheDocument();
 
-    const nameHeader = screen.queryByRole('heading', { name: /foods/i });
+    await waitFor(() => history.push('/drinks'));
+    const headerDrinks = screen.getByRole('heading', { name: /drinks/i, level: 2 });
+    expect(headerDrinks).toBeInTheDocument();
 
-    expect(nameHeader).toBeInTheDocument();
+    await waitFor(() => history.push('/profile'));
+    const headerProfile = screen.getByRole('heading', { name: /profile/i, level: 2 });
+    expect(headerProfile).toBeInTheDocument();
 
-    history.push('/drinks'); // não funciona
-    // screen.logTestingPlaygroundURL();
+    await waitFor(() => history.push('/done-recipes'));
+    const headerDoneRecipes = screen.getByRole('heading',
+      { name: /done recipes/i, level: 2 });
+    expect(headerDoneRecipes).toBeInTheDocument();
+
+    await waitFor(() => history.push('/favorite-recipes'));
+    const headerFavoriteRecipes = screen.getByRole('heading',
+      { name: /favorite recipes/i, level: 2 });
+    expect(headerFavoriteRecipes).toBeInTheDocument();
   });
-  // test('Verifica se ao modificar a rota para -/drinks- o título é modificado', () => {
-  //   history.push('/drinks');
-  //   const nameHeader = screen.queryByRole('heading', {
-  //     name: /foods/i });
-
-  //   expect(nameHeader).toBeInTheDocument();
-  // });
 });
