@@ -25,8 +25,15 @@ export default function RecipeDetailDrinkCard({ recipe, ingredients, measures })
   );
 }
 
+const shapeRecipe = {
+  strDrinkThumb: PropTypes.string.isRequired,
+  strDrink: PropTypes.string.isRequired,
+  strAlcoholic: PropTypes.string.isRequired,
+  strInstructions: PropTypes.string.isRequired,
+};
+
 RecipeDetailDrinkCard.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipe: PropTypes.shape(shapeRecipe).isRequired,
   ingredients: PropTypes.arrayOf(PropTypes.array).isRequired,
   measures: PropTypes.arrayOf(PropTypes.array).isRequired,
 };

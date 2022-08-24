@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import DrinkRecipeRecommendedCard from '../components/DrinkRecipeRecommendedCard';
 import MealRecipeRecommendedCard from '../components/MealRecipeRecommendedCard';
 import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
@@ -18,6 +18,7 @@ function RecipeDetails() {
   const [isThisRecipeDone, setIsThisRecipeDone] = useState(false);
   const [isThisRecipeStarted, setIsThisRecipeStarted] = useState(false);
   const { params: { idRecipe }, path } = useRouteMatch();
+  const { push: pushHistory } = useHistory();
   const sixRecipes = 6;
 
   const currentPath = () => {
@@ -96,6 +97,11 @@ function RecipeDetails() {
     }
   }, []);
 
+  const redirectToInProgress = () => {
+    const url = currentPath() === 'meals' ? 'foods' : 'drinks';
+    pushHistory(`/${url}/${idRecipe}/in-progress`);
+  };
+
   return (
     <div>
       { recipe && (path.includes('foods') ? (
@@ -127,6 +133,7 @@ function RecipeDetails() {
         <button
           type="button"
           className="startRecipe"
+          onClick={ redirectToInProgress }
           data-testid="start-recipe-btn"
         >
           { isThisRecipeStarted ? 'Continue Recipe' : 'Start Recipe'}
