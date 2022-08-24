@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function RecipeDetailMealCard({ recipe, ingredients, measures }) {
   return (
-    <div>
+    <div className="detailCard">
       <img
         src={ recipe.strMealThumb }
         alt={ recipe.strMeal }
@@ -28,7 +28,7 @@ export default function RecipeDetailMealCard({ recipe, ingredients, measures }) 
         src={ recipe.strYoutube }
         data-testid="video"
       />
-      <div data-testid={ `${0}-recomendation-card` } />
+
     </div>
   );
 }

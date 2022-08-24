@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
+import DrinkRecipeRecommendedCard from '../components/DrinkRecipeRecommendedCard';
+import MealRecipeRecommendedCard from '../components/MealRecipeRecommendedCard';
 import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
 import fetchEndPoint from '../services/fetchFunction';
+import './recipeDetails.css';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  const [recomendedRecipes, setRecomendedRecipes] = useState([]);
   const { params: { idRecipe }, path } = useRouteMatch();
+  const sixRecipes = 6;
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -27,6 +32,23 @@ function RecipeDetails() {
   },
   []);
 
+  useEffect(() => {
+    console.log(path);
+    const getMealsRecipes = async () => {
+      const recipes = await fetchEndPoint('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+      setRecomendedRecipes(await recipes.meals);
+    };
+    const getDrinksRecipes = async () => {
+      const recipes = await fetchEndPoint('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+      setRecomendedRecipes(await recipes.drinks);
+    };
+    if (path.includes('foods')) {
+      getDrinksRecipes();
+    } else {
+      getMealsRecipes();
+    }
+  }, []);
+
   const filterByPropertyName = (recipeEntries, name) => recipeEntries
     .filter((entrie) => entrie[0].includes(name) && (/\w+/).test(entrie[1])
      && entrie[1] !== null);
@@ -40,6 +62,10 @@ function RecipeDetails() {
   useEffect(() => {
     separetesIngredients();
   }, [recipe]);
+
+  const getFirstSixRecipes = () => (
+    recomendedRecipes.filter((_recomendedRecipe, index) => (
+      index < sixRecipes)));
 
   return (
     <div>
@@ -56,6 +82,22 @@ function RecipeDetails() {
             measures={ measures }
           />)
       )}
+      {
+        recomendedRecipes && (path.includes('/foods') ? <DrinkRecipeRecommendedCard
+          recommendedRecipes={ getFirstSixRecipes() }
+        />
+          : (
+            <MealRecipeRecommendedCard
+              recommendedRecipes={ getFirstSixRecipes() }
+            />))
+      }
+      <button
+        type="button"
+        className="startRecipe"
+        data-testid="start-recipe-btn"
+      >
+        Start Recipe
+      </button>
     </div>
   );
 }
