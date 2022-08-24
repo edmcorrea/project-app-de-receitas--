@@ -5,6 +5,8 @@ import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import { singleDrink, singleMeal } from './mocks/genericApiResponses';
 
+const MOCK_FOOD_URL = '/foods/52882';
+
 afterEach(() => {
   jest.clearAllMocks();
 });
@@ -17,7 +19,7 @@ describe('A página de detalhes de uma receita', () => {
     }));
 
     const { history } = renderWithRouterAndRedux(<App />);
-    await waitFor(() => history.push('/foods/52882'));
+    await waitFor(() => history.push(MOCK_FOOD_URL));
 
     expect(fetch).toHaveBeenCalled();
     expect(fetch).toHaveBeenCalledTimes(2);
@@ -40,7 +42,7 @@ describe('A página de detalhes de uma receita', () => {
     expect(fetch).toHaveBeenNthCalledWith(2, 'https://www.themealdb.com/api/json/v1/1/search.php?s=');
   });
 
-  it('Permite continuar uma receita já iniciada', async () => {
+  it('Permite continuar um drink já iniciado', async () => {
     global.fetch = jest.fn(async () => ({
       json: async () => singleDrink,
     }));
@@ -62,6 +64,28 @@ describe('A página de detalhes de uma receita', () => {
     localStorage.clear();
   });
 
+  it('Permite continuar uma comida já iniciada', async () => {
+    global.fetch = jest.fn(async () => ({
+      json: async () => singleDrink,
+    }));
+
+    const startedRecipe = { meals: { 52882: ['água'] } };
+    localStorage.setItem('inProgressRecipes', JSON.stringify(startedRecipe));
+
+    const { history } = renderWithRouterAndRedux(<App />);
+    await waitFor(() => history.push(MOCK_FOOD_URL));
+
+    const continueRecipeButton = screen.getByTestId('start-recipe-btn');
+    expect(continueRecipeButton).toHaveTextContent(/continue recipe/i);
+
+    userEvent.click(continueRecipeButton);
+
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/foods/52882/in-progress');
+
+    localStorage.clear();
+  });
+
   it('O botão para iniciar não é renderizado em uma receita concluída', async () => {
     global.fetch = jest.fn(async () => ({
       json: async () => singleMeal,
@@ -71,7 +95,7 @@ describe('A página de detalhes de uma receita', () => {
     localStorage.setItem('doneRecipes', JSON.stringify(finishedRecipe));
 
     const { history } = renderWithRouterAndRedux(<App />);
-    await waitFor(() => history.push('/foods/52882'));
+    await waitFor(() => history.push(MOCK_FOOD_URL));
 
     const buttons = screen.getAllByRole('button');
     expect(buttons).toHaveLength(2);
