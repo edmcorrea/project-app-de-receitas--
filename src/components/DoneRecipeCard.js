@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import shareIcon from '../images/shareIcon.svg';
 
+import './DoneRecipeCard.css';
+
 export default function DoneRecipeCard({ recipe, index }) {
   return (
-    <div style={ { border: '2px solid red' } }>
-      <img
-        data-testid={ `${index}-horizontal-image` }
-        src={ recipe.image }
-        alt={ recipe.name }
-      />
+    <div className="container">
+      <Link to={ `/${recipe.type}s/${recipe.id}` }>
+        <img
+          className="horizontal-image"
+          data-testid={ `${index}-horizontal-image` }
+          src={ recipe.image }
+          alt={ recipe.name }
+        />
+      </Link>
       <p data-testid={ `${index}-horizontal-top-text` }>
         {
           recipe.type === 'food'
@@ -18,7 +24,10 @@ export default function DoneRecipeCard({ recipe, index }) {
             : `${recipe.alcoholicOrNot}`
         }
       </p>
-      <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
+      <Link to={ `/${recipe.type}s/${recipe.id}` }>
+        <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
+
+      </Link>
       <p data-testid={ `${index}-horizontal-done-date` }>{ recipe.doneDate }</p>
 
       <button
