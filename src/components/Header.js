@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 import './header.css';
 
-function Header({ pathname }) {
+function Header() {
   const [nameHeader, setNameHeader] = useState('');
   const [showIcon, setshowIcon] = useState(true);
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const { location: { pathname } } = useHistory();
+
   useEffect(() => {
     if (pathname === '/foods') {
       setNameHeader('Foods');
@@ -55,10 +56,6 @@ function Header({ pathname }) {
     </div>
   );
 }
-
-Header.propTypes = {
-  pathname: PropTypes.string.isRequired,
-};
 
 const mapStateToProps = (store) => ({
   pathname: store.header.pathname,
