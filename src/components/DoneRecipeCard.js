@@ -40,6 +40,7 @@ export default function DoneRecipeCard({ recipe, index }) {
             }
           </p>
           <button
+            data-testid="share-btn"
             type="button"
             onClick={ () => shareButton(recipe.type, recipe.id) }
           >
