@@ -4,14 +4,11 @@ import React from 'react';
 import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 
-// verificar se o email em loclaStorage esta sendo renderizado
-// Verificar se os elementos estão sendo renderizados
-// Verificar se os redireecionamentos estão acontecendo para as rotas corretas
-
 describe('Profile Component', () => {
   test('Verifica se os elementos estão sendo renderizados', () => {
     const { history } = renderWithRouterAndRedux(<App />);
     history.push('/profile');
+
     const profileEmailEl = screen.getByTestId('profile-email');
     const profileDoneBtn = screen.getByTestId('profile-done-btn');
     const profileFavoriteBtn = screen.getByTestId('profile-favorite-btn');
@@ -26,6 +23,7 @@ describe('Profile Component', () => {
   test('Verifica se ao clicar no botão "Logout" é redirecinado para rota "/"', () => {
     const { history } = renderWithRouterAndRedux(<App />);
     history.push('/profile');
+
     const profileLogoutBtn = screen.getByTestId('profile-logout-btn');
 
     userEvent.click(profileLogoutBtn);
