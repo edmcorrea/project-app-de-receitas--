@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import './header.css';
 
 function Header({ pathname }) {
   const [nameHeader, setNameHeader] = useState('');
@@ -34,23 +35,24 @@ function Header({ pathname }) {
   }, [pathname]);
 
   return (
-    <>
+    <div className="header">
       <Link to="/profile">
-        <button type="button">
+        <button type="button" className="header-btn">
           <img src={ profileIcon } alt="profileIcon" data-testid="profile-top-btn" />
         </button>
       </Link>
-      <h2 data-testid="page-title">{nameHeader}</h2>
+      <h2 data-testid="page-title" className="header-title">{nameHeader}</h2>
       {showIcon && (
         <button
           type="button"
+          className="header-btn"
           onClick={ () => setShowSearchBar(!showSearchBar) }
         >
           <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>
       )}
       {(showSearchBar) && <SearchBar data-testid="search-input" /> }
-    </>
+    </div>
   );
 }
 

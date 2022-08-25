@@ -1,14 +1,85 @@
-/* * {
-} */
+body {
+  background-color: #ecf0f1;
+}
 
 .favorite-recipes {
+  padding-bottom: 3px;
+}
+
+.card-favorite-recipe {
   align-items: center;
+  border-radius: 8px;
+  box-shadow: rgb(146, 146, 146) 0.1em 0.1em 0.2em 0.1em;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  font-family: Ubuntu;
+  font-size: 20px;
+  margin: 16px 18px;
+  padding: 6px;
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+.card-favorite-recipe a {
+  display: flex;
+  width: 100%;
+}
+
+.card-favorite-recipe div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.card-favorite-recipe div p {
+  color: rgba(68, 68, 68, 0.596);
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.card-favorite-recipe section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  width: 50%;
+}
+
 .horizontal-image {
-  width: 300px;
+  border-radius: 8px;
+  width: 140px;
+}
+
+.filter-btns {
+  background-color: #ecf0f1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-type-meals {
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  display: flex;
+  flex-basis: 33%;
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-weight: 700;
+  justify-content: center;
+  margin: 0;
+  padding: 2px;
+}
+
+.btn-type-meals:active {
+  background-color: #d34333;
+  color: #ecf0f1;
+
 }
