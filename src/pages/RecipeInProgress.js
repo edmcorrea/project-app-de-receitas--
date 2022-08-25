@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
@@ -10,11 +10,43 @@ function RecipeinProgress() {
   const [recipe, setRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+  const [usedIngredients, setUsedIngredients] = useState([]);
   const { params: { idRecipe }, path } = useRouteMatch();
+  const { push } = useHistory();
   const currentPath = path.includes('foods') ? 'foods' : 'drinks';
   const objKey = path.includes('foods') ? 'Meal' : 'Drink';
+  const keyForLocalStorage = path.includes('foods') ? 'meals' : 'cocktails';
 
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
+
+  useEffect(() => {
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
+    const retrievedUsedIngredients = inProgressRecipes[keyForLocalStorage]
+      ? inProgressRecipes[keyForLocalStorage][idRecipe] : [];
+    setUsedIngredients(retrievedUsedIngredients);
+  }, []);
+
+  useEffect(() => {
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
+    const udpatedInProgressRecipes = { ...inProgressRecipes,
+      [keyForLocalStorage]: {
+        [idRecipe]: usedIngredients,
+      } };
+    localStorage.setItem('inProgressRecipes', JSON.stringify(udpatedInProgressRecipes));
+  }, [usedIngredients]);
+
+  const handleClickedIngredient = (clickedIngredient, clickedMeasure) => {
+    if (usedIngredients.includes(`${clickedIngredient} ${clickedMeasure}`)) {
+      const oldIngredients = usedIngredients
+        .filter((ingredient) => !ingredient.includes(clickedIngredient));
+      setUsedIngredients(oldIngredients);
+    } else {
+      setUsedIngredients([...usedIngredients, `${clickedIngredient} ${clickedMeasure}`]);
+    }
+  };
+
+  console.log(usedIngredients.length);
+  console.log(ingredients.length);
 
   return (
     <div className="detailCard">
@@ -31,22 +63,35 @@ function RecipeinProgress() {
       <ShareButton path={ currentPath } id={ recipe[`id${objKey}`] } />
       <FavoriteButton currentProduct={ recipe } />
       <h2 data-testid="recipe-title">{recipe[`str${objKey}`]}</h2>
-      {ingredients && ingredients.map((ingredient, index) => (
-        <label
-          htmlFor={ `${ingredient[1]}` }
-          key={ ingredient[1] }
-          data-testid={ `${index}-ingredient-step` }
-          className="ingredient"
-        >
-          <input id={ `${ingredient[1]}` } type="checkbox" />
-          <span>{`${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`}</span>
-        </label>
-      ))}
+      {ingredients && ingredients.map((ingredient, index) => {
+        const ingredientString = (
+          `${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`);
+        return (
+          <label
+            htmlFor={ `${ingredient[1]}` }
+            key={ ingredient[1] }
+            data-testid={ `${index}-ingredient-step` }
+            className="ingredient"
+          >
+            <input
+              id={ `${ingredient[1]}` }
+              type="checkbox"
+              checked={ usedIngredients
+                .includes(ingredientString) }
+              onChange={ () => handleClickedIngredient(
+                ingredient[1], measures[index] ? measures[index][1] : '',
+              ) }
+            />
+            <span>{ingredientString}</span>
+          </label>
+        );
+      })}
       <p data-testid="instructions">{recipe.strInstructions}</p>
       <button
         type="button"
-        onClick={ () => {} }
+        onClick={ () => push('/done-recipes') }
         data-testid="finish-recipe-btn"
+        disabled={ usedIngredients.length !== ingredients.length }
       >
         Finish recipe
       </button>
