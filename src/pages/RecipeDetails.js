@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import DrinkRecipeRecommendedCard from '../components/DrinkRecipeRecommendedCard';
 import FavoriteButton from '../components/FavoriteButton';
@@ -7,6 +7,7 @@ import MealRecipeRecommendedCard from '../components/MealRecipeRecommendedCard';
 import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
 import ShareButton from '../components/ShareButton';
+import { setRecipeInProgress } from '../redux/actions';
 import fetchEndPoint from '../services/fetchFunction';
 import './recipeDetails.css';
 
@@ -19,6 +20,7 @@ function RecipeDetails() {
   const [isThisRecipeStarted, setIsThisRecipeStarted] = useState(false);
   const { params: { idRecipe }, path } = useRouteMatch();
   const { push: pushHistory } = useHistory();
+  const dispatch = useDispatch();
   const sixRecipes = 6;
 
   const currentPath = () => {
@@ -99,6 +101,7 @@ function RecipeDetails() {
 
   const redirectToInProgress = () => {
     const url = currentPath() === 'meals' ? 'foods' : 'drinks';
+    dispatch(setRecipeInProgress(recipe, ingredients, measures));
     pushHistory(`/${url}/${idRecipe}/in-progress`);
   };
 
@@ -118,7 +121,6 @@ function RecipeDetails() {
           />)
       )}
       <ShareButton />
-      {/* Botão de favoritar precisa receber via props o produto atual */}
       <FavoriteButton currentProduct={ recipe } />
       {
         recomendedRecipes && (path.includes('/foods') ? <DrinkRecipeRecommendedCard
