@@ -104,8 +104,8 @@ function FavoriteRecipes(props) {
                 <h3 data-testid={ `${index}-horizontal-name` }>{fav.name}</h3>
               </div>
             </Link>
+            { showMessage && <h4 className="copy-message">Link copied!</h4> }
             <section>
-              { showMessage && <p className="copy-message">Link copied!</p> }
               <button
                 type="button"
                 className="btn-type-meals"
@@ -134,32 +134,30 @@ function FavoriteRecipes(props) {
         ))
       ) : (
         stateFavoriteRecipes.filter(({ type }) => type === typeFood).map((fav, index) => (
-          <div key={ fav.id }>
-            <Link
-              to={ `/${fav.type}s/${fav.id}` }
-              className="card-favorite-recipe"
-            >
+          <div key={ fav.id } className="card-favorite-recipe">
+            <Link to={ `/${fav.type}s/${fav.id}` }>
               <img
                 src={ fav.image }
                 alt={ fav.name }
                 className="horizontal-image"
                 data-testid={ `${index}-horizontal-image` }
               />
-
-              <p
-                data-testid={ `${index}-horizontal-top-text` }
-              >
-                {(fav.type === 'food')
-                  ? `${fav.nationality} - ${fav.category}`
-                  : fav.alcoholicOrNot}
-
-              </p>
+              <div>
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {(fav.type === 'food')
+                    ? `${fav.nationality} - ${fav.category}`
+                    : fav.alcoholicOrNot}
+                </p>
+                <h3 data-testid={ `${index}-horizontal-name` }>{fav.name}</h3>
+              </div>
             </Link>
+            { showMessage && <h4 className="copy-message">Link copied!</h4> }
             <section>
-              <p data-testid={ `${index}-horizontal-name` }>{fav.name}</p>
-              { showMessage && <p className="copy-message">Link copied!</p> }
               <button
                 type="button"
+                className="btn-type-meals"
                 onClick={ () => handleShareButton(fav.type, fav.id) }
               >
                 <img
@@ -173,6 +171,7 @@ function FavoriteRecipes(props) {
                 data-testid={ `${index}-horizontal-favorite-btn` }
                 onClick={ () => handleFavoriteRecipeButton(fav.id) }
                 src={ blackHeartIcon }
+                className="btn-type-meals"
               >
                 <img
                   src={ blackHeartIcon }
