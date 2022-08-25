@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import ShareButton from '../components/ShareButton';
+import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 
 const copy = require('clipboard-copy');
@@ -18,7 +18,8 @@ describe('O botão de compartilhar', () => {
       jest.useFakeTimers();
       const COPY_MESSAGE_TIMEOUT = 2000;
 
-      renderWithRouterAndRedux(<ShareButton />);
+      const { history } = renderWithRouterAndRedux(<App />);
+      history.push('/foods/52882');
 
       const shareButton = screen.getByTestId('share-btn');
 
@@ -31,7 +32,7 @@ describe('O botão de compartilhar', () => {
       expect(copyMessage).toBeInTheDocument();
       expect(copy).toHaveBeenCalled();
       expect(copy).toHaveBeenCalledTimes(1);
-      expect(copy).toHaveBeenCalledWith('http://localhost/');
+      expect(copy).toHaveBeenCalledWith('http://localhost:3000/foods/52882');
       jest.advanceTimersByTime(COPY_MESSAGE_TIMEOUT);
       expect(copyMessage).not.toBeInTheDocument();
     });
