@@ -1,0 +1,14 @@
+/* * {
+} */
+
+.favorite-recipes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.horizontal-image {
+  width: 300px;
+}
