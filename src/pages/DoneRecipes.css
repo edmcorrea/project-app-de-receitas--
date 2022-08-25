@@ -3,9 +3,22 @@
   border: 1px solid white;
   display: flex;
   flex-direction: column;
+  gap: 16px;
   justify-content: center;
+  padding: 16px;
 }
 
-.container-card {
+.container-buttons {
   display: flex;
+  gap: 8px;
+}
+
+.container-buttons button {
+  padding: 8px 16px;
+}
+
+.container-done-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

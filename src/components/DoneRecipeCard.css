@@ -1,11 +1,30 @@
-.container {
+.container-done-card {
   align-items: center;
-  border: 1px solid red;
+  border: 2px solid red;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  max-width: 480px;
 }
 
-.container .horizontal-image {
-  width: 200px;
+.container-done-card .horizontal-image {
+  width: 120px;
+}
+
+.container-info {
+  padding: 0 8px;
+}
+
+.container-text-share-btn {
+  display: flex;
+}
+
+.container-tag {
+  display: flex;
+}
+
+.container-tag p {
+  background-color: #eee;
+  border-radius: 24px;
+  margin: 8px;
+  padding: 8px;
 }

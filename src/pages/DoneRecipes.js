@@ -48,32 +48,34 @@ function DoneRecipes(props) {
   return (
     <div className="container-done-recipes">
       <Header history={ history } />
-      <button
-        onClick={ filterRecipes }
-        data-testid="filter-by-all-btn"
-        name="all"
-        type="button"
-      >
-        All
-      </button>
-      <button
-        onClick={ filterRecipes }
-        data-testid="filter-by-food-btn"
-        name="food"
-        type="button"
-      >
-        Food
-      </button>
-      <button
-        onClick={ filterRecipes }
-        data-testid="filter-by-drink-btn"
-        name="drink"
-        type="button"
-      >
-        Drinks
-      </button>
+      <div className="container-buttons">
+        <button
+          onClick={ filterRecipes }
+          data-testid="filter-by-all-btn"
+          name="all"
+          type="button"
+        >
+          All
+        </button>
+        <button
+          onClick={ filterRecipes }
+          data-testid="filter-by-food-btn"
+          name="food"
+          type="button"
+        >
+          Food
+        </button>
+        <button
+          onClick={ filterRecipes }
+          data-testid="filter-by-drink-btn"
+          name="drink"
+          type="button"
+        >
+          Drinks
+        </button>
+      </div>
 
-      <div className="container-card">
+      <div className="container-done-cards">
         {doneRecipes
           .filter((recipe) => recipe.type !== type)
           .map((recipe, index) => (

@@ -20,7 +20,7 @@ export default function DoneRecipeCard({ recipe, index }) {
   };
 
   return (
-    <div className="container">
+    <div className="container-done-card">
       <Link to={ `/${recipe.type}s/${recipe.id}` }>
         <img
           className="horizontal-image"
@@ -29,39 +29,50 @@ export default function DoneRecipeCard({ recipe, index }) {
           alt={ recipe.name }
         />
       </Link>
-      <p data-testid={ `${index}-horizontal-top-text` }>
-        {
-          recipe.type === 'food'
-            ? `${recipe.nationality} - ${recipe.category}`
-            : `${recipe.alcoholicOrNot}`
-        }
-      </p>
-      <Link to={ `/${recipe.type}s/${recipe.id}` }>
-        <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
 
-      </Link>
-      <p data-testid={ `${index}-horizontal-done-date` }>{ recipe.doneDate }</p>
+      <div className="container-info">
+        <div className="container-text-share-btn">
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            {
+              recipe.type === 'food'
+                ? `${recipe.nationality} - ${recipe.category}`
+                : `${recipe.alcoholicOrNot}`
+            }
+          </p>
+          <button
+            type="button"
+            onClick={ () => shareButton(recipe.type, recipe.id) }
+          >
+            <img
+              data-testid={ `${index}-horizontal-share-btn` }
+              src={ shareIcon }
+              alt="Icone para Compartilhar"
+            />
+          </button>
+        </div>
 
-      { showMessage && <p className="copy-message">Link copied!</p> }
-      <button
-        type="button"
-        onClick={ () => shareButton(recipe.type, recipe.id) }
-      >
-        <img
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          alt="Icone para Compartilhar"
-        />
-      </button>
-
-      {recipe.tags.map((tag) => (
-        <p
-          key={ tag }
-          data-testid={ `${index}-${tag}-horizontal-tag` }
-        >
-          { tag }
+        <Link to={ `/${recipe.type}s/${recipe.id}` }>
+          <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
+        </Link>
+        <p data-testid={ `${index}-horizontal-done-date` }>
+          Done in:
+          {' '}
+          { recipe.doneDate }
         </p>
-      ))}
+
+        { showMessage && <p className="copy-message">Link copied!</p> }
+
+        <div className="container-tag">
+          {recipe.tags.map((tag) => (
+            <p
+              key={ tag }
+              data-testid={ `${index}-${tag}-horizontal-tag` }
+            >
+              { tag }
+            </p>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
