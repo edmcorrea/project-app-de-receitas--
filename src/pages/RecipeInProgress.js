@@ -4,6 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
+import '../styles/RecipeInProgress.css';
 
 function RecipeinProgress() {
   const [recipe, setRecipe] = useState({});
@@ -30,14 +31,14 @@ function RecipeinProgress() {
       <FavoriteButton currentProduct={ recipe } />
       <h2 data-testid="recipe-title">{recipe[`str${objKey}`]}</h2>
       {ingredients && ingredients.map((ingredient, index) => (
-
         <label
           htmlFor={ `${ingredient[1]}` }
           key={ ingredient[1] }
           data-testid={ `${index}-ingredient-step` }
+          className="ingredient"
         >
           <input id={ `${ingredient[1]}` } type="checkbox" />
-          {`${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`}
+          <span>{`${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`}</span>
         </label>
       ))}
       <p data-testid="instructions">{recipe.strInstructions}</p>
