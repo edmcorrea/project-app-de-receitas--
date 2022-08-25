@@ -11,6 +11,7 @@ function RecipeinProgress() {
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
   const { params: { idRecipe }, path } = useRouteMatch();
+  const currentPath = path.includes('foods') ? 'foods' : 'drinks';
   const objKey = path.includes('foods') ? 'Meal' : 'Drink';
 
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
@@ -27,7 +28,7 @@ function RecipeinProgress() {
           path.includes('foods') ? recipe.strCategory : recipe.strAlcoholic
         }
       </h3>
-      <ShareButton />
+      <ShareButton path={ currentPath } id={ recipe[`id${objKey}`] } />
       <FavoriteButton currentProduct={ recipe } />
       <h2 data-testid="recipe-title">{recipe[`str${objKey}`]}</h2>
       {ingredients && ingredients.map((ingredient, index) => (

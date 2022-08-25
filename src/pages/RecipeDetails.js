@@ -120,7 +120,7 @@ function RecipeDetails() {
             measures={ measures }
           />)
       )}
-      <ShareButton />
+      <ShareButton path={ path.includes('foods') ? 'foods' : 'drinks' } id={ idRecipe } />
       <FavoriteButton currentProduct={ recipe } />
       {
         recomendedRecipes && (path.includes('/foods') ? <DrinkRecipeRecommendedCard

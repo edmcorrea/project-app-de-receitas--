@@ -1,0 +1,9 @@
+.share-and-favorite-buttons {
+  background: transparent;
+  border: none;
+}
+
+.share-and-favorite-buttons img {
+  height: auto;
+  max-width: 20px;
+}

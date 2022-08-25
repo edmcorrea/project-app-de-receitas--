@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import '../styles/FavoriteAndShareButtons.css';
 
 function FavoriteButton({ currentProduct = {}, productId = undefined }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -58,6 +59,7 @@ function FavoriteButton({ currentProduct = {}, productId = undefined }) {
       data-testid="favorite-btn"
       onClick={ () => handleFavoriteRecipeButton() }
       src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
+      className="share-and-favorite-buttons"
     >
       <img src={ isFavorite ? blackHeartIcon : whiteHeartIcon } alt="Favorite" />
     </button>
