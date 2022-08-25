@@ -1,12 +1,13 @@
 .meals {
   align-items: center;
-  background: #0fa36b;
+  background: #ecf0f1;
   color: #464646;
-  display: flex;
+
+  /* display: flex; */
   flex-direction: column;
   font-family: sans-serif;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
 }
 
 .rocksGlass {
