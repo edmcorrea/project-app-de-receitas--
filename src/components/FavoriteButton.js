@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
@@ -67,7 +67,11 @@ function FavoriteButton({ currentProduct = {}, productId = undefined }) {
 
 FavoriteButton.propTypes = {
   currentProduct: PropTypes.shape(PropTypes.shape).isRequired,
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.string,
+};
+
+FavoriteButton.defaultProps = {
+  productId: undefined,
 };
 
 export default FavoriteButton;

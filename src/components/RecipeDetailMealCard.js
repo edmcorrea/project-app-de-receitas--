@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export default function RecipeDetailMealCard({ recipe, ingredients, measures }) {
   return (
@@ -27,6 +27,7 @@ export default function RecipeDetailMealCard({ recipe, ingredients, measures }) 
         height="315"
         src={ recipe.strYoutube }
         data-testid="video"
+        className="video"
       />
 
     </div>
