@@ -7,6 +7,7 @@ import { singleDrink, singleMeal } from './mocks/genericApiResponses';
 
 const MOCK_FOOD_URL = '/foods/52882/in-progress';
 const MOCK_DRINK_URL = '/drinks/17256/in-progress';
+const FIRST_INGREDIENT = '0-ingredient-step';
 
 beforeEach(() => {
   localStorage.clear();
@@ -52,7 +53,7 @@ describe('A página de receita em progresso:', () => {
 
     await waitFor(() => history.push(MOCK_DRINK_URL));
 
-    const recipeIngredient = screen.getByTestId('0-ingredient-step');
+    const recipeIngredient = screen.getByTestId(FIRST_INGREDIENT);
 
     expect(recipeIngredient.children[0].checked).toBeFalsy();
 
@@ -80,7 +81,7 @@ describe('A página de receita em progresso:', () => {
 
     await waitFor(() => history.push(MOCK_DRINK_URL));
 
-    const recipeIngredient = screen.getByTestId('0-ingredient-step');
+    const recipeIngredient = screen.getByTestId(FIRST_INGREDIENT);
 
     expect(recipeIngredient.children[0].checked).toBeTruthy();
 
@@ -100,7 +101,7 @@ describe('A página de receita em progresso:', () => {
 
     await waitFor(() => history.push(MOCK_DRINK_URL));
 
-    const recipeIngredient1 = screen.getByTestId('0-ingredient-step');
+    const recipeIngredient1 = screen.getByTestId(FIRST_INGREDIENT);
     const recipeIngredient2 = screen.getByTestId('1-ingredient-step');
     const recipeIngredient3 = screen.getByTestId('2-ingredient-step');
     const recipeIngredient4 = screen.getByTestId('3-ingredient-step');
