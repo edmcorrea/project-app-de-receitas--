@@ -18,6 +18,7 @@ function RecipeinProgress() {
   const objKey = path.includes('foods') ? 'Meal' : 'Drink';
   const keyForLocalStorage = path.includes('foods') ? 'meals' : 'cocktails';
 
+  console.log(idRecipe, path);
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
 
   useEffect(() => {
@@ -61,7 +62,7 @@ function RecipeinProgress() {
       <ShareButton path={ currentPath } id={ recipe[`id${objKey}`] } />
       <FavoriteButton currentProduct={ recipe } />
       <h2 data-testid="recipe-title">{recipe[`str${objKey}`]}</h2>
-      {ingredients && ingredients.map((ingredient, index) => {
+      {ingredients.map((ingredient, index) => {
         const ingredientString = (
           `${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`);
         return (

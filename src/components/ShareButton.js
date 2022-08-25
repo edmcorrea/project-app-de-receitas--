@@ -33,7 +33,7 @@ function ShareButton({ path, id }) {
 
 ShareButton.propTypes = {
   path: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ShareButton;
