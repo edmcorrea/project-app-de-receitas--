@@ -1,8 +1,9 @@
 .meals {
-  align-items: flex-start;
-  background: #0fa36b;
+  align-items: center;
+  background: #ecf0f1;
   color: #464646;
-  display: flex;
+
+  /* display: flex; */
   flex-direction: column;
   font-family: sans-serif;
   justify-content: center;
