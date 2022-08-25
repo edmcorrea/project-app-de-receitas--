@@ -16,9 +16,12 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    const { history: { location: { pathname } }, updateCurrentPath } = this.props;
+    // const { history: { location: { pathname } }, updateCurrentPath } = this.props;
+    // console.log(pathname);
+    const { updateCurrentPath } = this.props;
+    // console.log(window.location.pathname);
     this.getUserLocalStorage();
-    updateCurrentPath(pathname);
+    updateCurrentPath(window.location.pathname);
   }
 
   getUserLocalStorage = () => {
@@ -62,7 +65,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  history: PropTypes.shape(PropTypes.shape).isRequired,
+  // history: PropTypes.shape(PropTypes.shape).isRequired,
   updateCurrentPath: PropTypes.func.isRequired,
 };
 

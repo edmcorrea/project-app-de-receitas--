@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import DrinkRecipeRecommendedCard from '../components/DrinkRecipeRecommendedCard';
+import FavoriteButton from '../components/FavoriteButton';
 import MealRecipeRecommendedCard from '../components/MealRecipeRecommendedCard';
 import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
+import ShareButton from '../components/ShareButton';
 import fetchEndPoint from '../services/fetchFunction';
 import './recipeDetails.css';
-import ShareButton from '../components/ShareButton';
-import FavoriteButton from '../components/FavoriteButton';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
