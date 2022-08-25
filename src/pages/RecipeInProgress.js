@@ -35,18 +35,15 @@ function RecipeinProgress() {
     localStorage.setItem('inProgressRecipes', JSON.stringify(udpatedInProgressRecipes));
   }, [usedIngredients]);
 
-  const handleClickedIngredient = (clickedIngredient, clickedMeasure) => {
-    if (usedIngredients.includes(`${clickedIngredient} ${clickedMeasure}`)) {
+  const handleClickedIngredient = (ingredientString) => {
+    if (usedIngredients.includes(ingredientString)) {
       const oldIngredients = usedIngredients
-        .filter((ingredient) => !ingredient.includes(clickedIngredient));
+        .filter((ingredient) => !ingredient.includes(ingredientString));
       setUsedIngredients(oldIngredients);
     } else {
-      setUsedIngredients([...usedIngredients, `${clickedIngredient} ${clickedMeasure}`]);
+      setUsedIngredients([...usedIngredients, ingredientString]);
     }
   };
-
-  console.log(usedIngredients.length);
-  console.log(ingredients.length);
 
   return (
     <div className="detailCard">
@@ -68,19 +65,16 @@ function RecipeinProgress() {
           `${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`);
         return (
           <label
-            htmlFor={ `${ingredient[1]}` }
-            key={ ingredient[1] }
+            htmlFor={ ingredientString }
+            key={ `${ingredientString} ${index}` }
             data-testid={ `${index}-ingredient-step` }
             className="ingredient"
           >
             <input
-              id={ `${ingredient[1]}` }
+              id={ ingredientString }
               type="checkbox"
-              checked={ usedIngredients
-                .includes(ingredientString) }
-              onChange={ () => handleClickedIngredient(
-                ingredient[1], measures[index] ? measures[index][1] : '',
-              ) }
+              checked={ usedIngredients.includes(ingredientString) }
+              onChange={ () => handleClickedIngredient(ingredientString) }
             />
             <span>{ingredientString}</span>
           </label>
