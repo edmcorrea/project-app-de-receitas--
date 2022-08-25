@@ -1,8 +1,7 @@
-import { SEARCH_RECIPES, SET_RECIPE_IN_PROGRESS } from '../actions/actionTypes';
+import { SEARCH_RECIPES } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   recipes: [],
-  recipeInProgress: {},
 };
 
 const recipesReducer = (state = INITIAL_STATE, action) => {
@@ -11,11 +10,6 @@ const recipesReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       recipes: action.payload,
-    };
-  case SET_RECIPE_IN_PROGRESS:
-    return {
-      ...state,
-      recipeInProgress: action.payload,
     };
   default:
     return state;

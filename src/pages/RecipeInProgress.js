@@ -13,6 +13,7 @@ function RecipeinProgress() {
   const [usedIngredients, setUsedIngredients] = useState([]);
   const { params: { idRecipe }, path } = useRouteMatch();
   const { push } = useHistory();
+
   const currentPath = path.includes('foods') ? 'foods' : 'drinks';
   const objKey = path.includes('foods') ? 'Meal' : 'Drink';
   const keyForLocalStorage = path.includes('foods') ? 'meals' : 'cocktails';
