@@ -1,21 +1,16 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import shareIcon from '../images/shareIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import ShareButton from '../components/ShareButton';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { nameHeader } from '../redux/actions';
 import '../styles/favoriteRecipes.css';
-
-const copy = require('clipboard-copy');
-
-const COPY_MESSAGE_TIMEOUT = 2000;
 
 function FavoriteRecipes(props) {
   const [filterAll, setFilterAll] = useState(true);
   const [typeFood, setTypeFood] = useState('');
-  const [showMessage, setShowMessage] = useState(false);
   const [stateFavoriteRecipes, setStateFavoriteRecipes] = useState([]);
 
   useEffect(() => {
@@ -26,13 +21,6 @@ function FavoriteRecipes(props) {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     setStateFavoriteRecipes(favoriteRecipes);
   }, []);
-
-  const handleShareButton = (type, id) => {
-    const hRef = `http://localhost:3000/${type}s/${id}`;
-    copy(hRef);
-    setShowMessage(true);
-    setTimeout(() => setShowMessage(false), COPY_MESSAGE_TIMEOUT);
-  };
 
   const removeFavoriteRecipe = (favoriteRecipes, id) => {
     const newFavoriteRecipes = favoriteRecipes.filter((recipe) => recipe.id !== id);
@@ -104,19 +92,8 @@ function FavoriteRecipes(props) {
                 <h3 data-testid={ `${index}-horizontal-name` }>{fav.name}</h3>
               </div>
             </Link>
-            { showMessage && <h4 className="copy-message">Link copied!</h4> }
             <section>
-              <button
-                type="button"
-                className="btn-type-meals"
-                onClick={ () => handleShareButton(fav.type, fav.id) }
-              >
-                <img
-                  data-testid={ `${index}-horizontal-share-btn` }
-                  src={ shareIcon }
-                  alt="Share"
-                />
-              </button>
+              <ShareButton path={ `${fav.type}s` } id={ fav.id } />
               <button
                 type="button"
                 className="btn-type-meals"
@@ -153,19 +130,8 @@ function FavoriteRecipes(props) {
                 <h3 data-testid={ `${index}-horizontal-name` }>{fav.name}</h3>
               </div>
             </Link>
-            { showMessage && <h4 className="copy-message">Link copied!</h4> }
             <section>
-              <button
-                type="button"
-                className="btn-type-meals"
-                onClick={ () => handleShareButton(fav.type, fav.id) }
-              >
-                <img
-                  data-testid={ `${index}-horizontal-share-btn` }
-                  src={ shareIcon }
-                  alt="Share"
-                />
-              </button>
+              <ShareButton path={ `${fav.type}s` } id={ fav.id } />
               <button
                 type="button"
                 data-testid={ `${index}-horizontal-favorite-btn` }
