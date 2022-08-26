@@ -12,6 +12,18 @@ function Header() {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const { location: { pathname } } = useHistory();
 
+  const showSearchBarFunction = () => {
+    const searchBar = document.getElementsByClassName('searchBar')[0];
+    if (showSearchBar) {
+      searchBar.classList.add('slideToRight');
+      setTimeout(() => {
+        setShowSearchBar(!showSearchBar);
+      }, 500);
+    } else {
+      setShowSearchBar(!showSearchBar);
+    }
+  };
+
   useEffect(() => {
     if (pathname === '/foods') {
       setNameHeader('Foods');
@@ -47,7 +59,7 @@ function Header() {
         <button
           type="button"
           className="header-btn"
-          onClick={ () => setShowSearchBar(!showSearchBar) }
+          onClick={ showSearchBarFunction }
         >
           <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>

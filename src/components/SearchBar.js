@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { searchRecipes } from '../redux/actions';
+import '../styles/searchbar.css';
 
 const SEARCH_ENDPOINTS = {
   foods: {
@@ -62,14 +63,24 @@ function SearchBar() {
   };
 
   return (
-    <form>
-      <input
-        type="text"
-        placeholder="Search recipe"
-        data-testid="search-input"
-        value={ search.text }
-        onChange={ ({ target }) => setSearch({ ...search, text: target.value }) }
-      />
+    <form className="searchBar">
+      <div className="inputAndButton">
+        <input
+          type="text"
+          placeholder="Type your search"
+          data-testid="search-input"
+          value={ search.text }
+          onChange={ ({ target }) => setSearch({ ...search, text: target.value }) }
+          className="inputSearch"
+        />
+        <button
+          type="button"
+          onClick={ () => handleSearch() }
+          data-testid="exec-search-btn"
+        >
+          Search
+        </button>
+      </div>
       <div className="radio-inputs">
         <label htmlFor="ingredient-search-radio">
           <input
@@ -108,13 +119,6 @@ function SearchBar() {
           First letter
         </label>
       </div>
-      <button
-        type="button"
-        onClick={ () => handleSearch() }
-        data-testid="exec-search-btn"
-      >
-        Search
-      </button>
     </form>
   );
 }

@@ -1,0 +1,79 @@
+.searchBar {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  background-color: white;
+  width: 340px;
+  padding: 10px 20px;
+  transition-duration: 5s;
+  animation: glideSearchBar 0.5s;
+}
+
+.slideToRight {
+  animation: glideSearchBarToRight 0.6s;
+}
+
+.inputSearch {
+  background-color: rgba(235, 235, 235, 1);
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 220px;
+  padding: 2px 10px;
+  height: 30px;
+}
+
+.inputAndButton {
+  display: flex;
+  gap: 15px;
+}
+
+.inputAndButton button {
+  background-color: #FF6A28;
+  border-radius: 20px;
+  color: white;
+  height: 35px;
+  width: 90px;
+  border: none;
+}
+
+.radio-inputs {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.radio-inputs label {
+  border: 2px solid #F0F0F0;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.radio-inputs label:hover {
+  border-color: #FF6A28;
+}
+
+
+.radio-inputs input {
+  display: none;
+}
+
+@keyframes glideSearchBar {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes glideSearchBarToRight {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
