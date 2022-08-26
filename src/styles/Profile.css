@@ -1,0 +1,37 @@
+.profile-page {
+  background-color: white;
+  height: 100vh;
+}
+
+.profile-main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.profile-main h1 {
+  color: #212529;
+  font-family: Ubuntu , sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.profile-main button {
+  background-color: transparent;
+  border: 2px solid #ff6a28;
+  border-radius: 15px;
+  color: #ff6a28;
+  font-family: Ubuntu , sans-serif;
+  font-size: 20px;
+  padding: 12px 0;
+  width: 70vw;
+}
+
+.profile-main .logout-btn {
+  background-color: #ff6a28;
+  color: white;
+}
