@@ -18,8 +18,9 @@ function RecipeinProgress() {
   const objKey = path.includes('foods') ? 'Meal' : 'Drink';
   const keyForLocalStorage = path.includes('foods') ? 'meals' : 'cocktails';
 
-  console.log(idRecipe, path);
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
+
+  console.log(recipe);
 
   useEffect(() => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
@@ -46,6 +47,22 @@ function RecipeinProgress() {
     } else {
       setUsedIngredients([...usedIngredients, ingredientString]);
     }
+  };
+
+  const getCurrentDate = () => {
+    const day = new Date().getDate();
+    const month = new Date().getMonth();
+    const year = new Date().getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  const handleDoneButton = () => {
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+    localStorage.setItem('doneRecipes',
+      JSON.stringify(
+        [...doneRecipes, { ...recipe, type: currentPath, doneDate: getCurrentDate() }],
+      ));
+    push('/done-recipes');
   };
 
   return (
@@ -86,7 +103,7 @@ function RecipeinProgress() {
       <p data-testid="instructions">{recipe.strInstructions}</p>
       <button
         type="button"
-        onClick={ () => push('/done-recipes') }
+        onClick={ () => handleDoneButton() }
         data-testid="finish-recipe-btn"
         disabled={ usedIngredients.length !== ingredients.length }
       >
