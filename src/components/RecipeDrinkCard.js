@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import './recipeCard.css';
+import '../styles/recipeCard.css';
 
 export default function RecipeDrinkCard(props) {
   const { recipe: { strDrinkThumb, strDrink, idDrink }, index } = props;

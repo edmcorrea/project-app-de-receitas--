@@ -7,7 +7,7 @@ import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import RecipeMealCard from '../components/RecipeMealCard';
 import { nameHeader, searchRecipes } from '../redux/actions';
 import fetchEndPoint from '../services/fetchFunction';
-import './recipes.css';
+import '../styles/recipes.css';
 
 function Recipes(props) {
   const { getRecipes, updateCurrentPath, recipes } = props;

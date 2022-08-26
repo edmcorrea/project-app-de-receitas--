@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './recommendedMealAndDrinkCard.css';
+import '../styles/recommendedMealAndDrinkCard.css';
 
 export default function DrinkRecipeRecommendedCard({ recommendedRecipes }) {
   return (

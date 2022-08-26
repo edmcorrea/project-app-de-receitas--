@@ -6,7 +6,7 @@ import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Header from '../components/Header';
 import { nameHeader } from '../redux/actions';
-import './favoriteRecipes.css';
+import '../styles/favoriteRecipes.css';
 
 const copy = require('clipboard-copy');
 

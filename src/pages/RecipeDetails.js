@@ -8,7 +8,7 @@ import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
 import ShareButton from '../components/ShareButton';
 import fetchEndPoint from '../services/fetchFunction';
-import './recipeDetails.css';
+import '../styles/recipeDetails.css';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});

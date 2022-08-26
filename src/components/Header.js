@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
-import './header.css';
+import '../styles/header.css';
 
 function Header() {
   const [nameHeader, setNameHeader] = useState('');

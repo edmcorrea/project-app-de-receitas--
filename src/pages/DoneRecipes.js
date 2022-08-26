@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import DoneRecipeCard from '../components/DoneRecipeCard';
 import Header from '../components/Header';
 
-import './DoneRecipes.css';
+import '../styles/DoneRecipes.css';
 
 // doneRecipes -> Mock para preencher as informações do Componente
 const doneRecipesMock = [

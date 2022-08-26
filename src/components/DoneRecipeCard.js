@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import shareIcon from '../images/shareIcon.svg';
 
-import './DoneRecipeCard.css';
+import '../styles/DoneRecipeCard.css';
 
 const copy = require('clipboard-copy');
 
