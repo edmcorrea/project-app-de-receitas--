@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import './DoneRecipes.css';
 
 // doneRecipes -> Mock para preencher as informações do Componente
-const doneRecipes = [
+const doneRecipesMock = [
   {
     id: '52771',
     type: 'food',
@@ -44,6 +44,9 @@ function DoneRecipes(props) {
     const value = target.name === 'food' ? 'drink' : 'food';
     setType(value);
   };
+
+  // const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || doneRecipesMock;
 
   return (
     <div className="container-done-recipes">
