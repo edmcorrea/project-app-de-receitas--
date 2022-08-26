@@ -112,10 +112,8 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
     const btnShare = screen.queryAllByRole('img', { name: /share/i });
 
     expect(btnShare[0]).toBeInTheDocument();
-    // expect(btnShare[1]).toBeInTheDocument();
 
     userEvent.click(btnShare[0]);
-    // userEvent.click(btnShare[1]);
 
     const copyMessage = screen.queryAllByRole('heading', { name: /link copied!/i });
 
