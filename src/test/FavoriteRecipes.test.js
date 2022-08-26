@@ -112,6 +112,39 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
     const btnShare = screen.queryAllByRole('img', { name: /share/i });
 
     expect(btnShare[0]).toBeInTheDocument();
+    // expect(btnShare[1]).toBeInTheDocument();
+
+    userEvent.click(btnShare[0]);
+    // userEvent.click(btnShare[1]);
+
+    const copyMessage = screen.queryAllByRole('heading', { name: /link copied!/i });
+
+    expect(copyMessage[0]).toBeInTheDocument();
+    expect(copyMessage[1]).toBeInTheDocument();
+
+    const hRef = 'http://localhost:3000/foods/52771';
+
+    expect(copy).toHaveBeenCalledWith(hRef);
+    expect(copy).toHaveBeenCalledTimes(1);
+    expect(copy).toHaveBeenCalled();
+    jest.advanceTimersByTime(COPY_MESSAGE_TIMEOUT);
+    expect(copyMessage[0]).not.toBeInTheDocument();
+  });
+
+  test(`Verifica se ao clicar no botão 'share na pagina de filtros', os 
+  eventos ocorrem corretamente`, async () => {
+    jest.useFakeTimers();
+    const COPY_MESSAGE_TIMEOUT = 2000;
+    const { history } = renderWithRouterAndRedux(<App />);
+    await waitFor(() => history.push(historyFavRecipes));
+
+    const btnDrinks = screen.getByRole('button', { name: /drinks/i });
+
+    userEvent.click(btnDrinks);
+
+    const btnShare = screen.queryAllByRole('img', { name: /share/i });
+
+    expect(btnShare[0]).toBeInTheDocument();
 
     userEvent.click(btnShare[0]);
 
@@ -119,7 +152,7 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
 
     expect(copyMessage[0]).toBeInTheDocument();
 
-    const hRef = 'http://localhost:3000/foods/52771';
+    const hRef = 'http://localhost:3000/drinks/178319';
 
     expect(copy).toHaveBeenCalledWith(hRef);
     expect(copy).toHaveBeenCalledTimes(1);
