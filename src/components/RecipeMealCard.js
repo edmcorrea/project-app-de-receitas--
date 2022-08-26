@@ -1,18 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/recipeCard.css';
 
 export default function RecipeMealCard(props) {
-  const { recipe: { strMealThumb, strMeal, idMeal }, index } = props;
-  const { push } = useHistory();
-
-  const redirectToPageDetails = () => {
-    push(`foods/${idMeal}`);
-  };
+  const { recipe: { strMealThumb, strMeal, idMeal, strCategory }, index } = props;
 
   return (
-    <button onClick={ redirectToPageDetails } type="button">
+    <Link to={ `foods/${idMeal}` }>
       <div
         className="card"
         data-testid={ `${index}-recipe-card` }
@@ -23,14 +18,17 @@ export default function RecipeMealCard(props) {
           src={ strMealThumb }
           alt={ `Foto da receita ${strMeal}` }
         />
-        <h3
-          data-testid={ `${index}-card-name` }
-        >
-          {strMeal}
+        <div className="cardText">
+          <h3
+            data-testid={ `${index}-card-name` }
+          >
+            {strMeal}
 
-        </h3>
+          </h3>
+          <h4>{strCategory}</h4>
+        </div>
       </div>
-    </button>
+    </Link>
   );
 }
 

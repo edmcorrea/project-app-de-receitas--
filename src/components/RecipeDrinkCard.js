@@ -1,16 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/recipeCard.css';
 
 export default function RecipeDrinkCard(props) {
-  const { recipe: { strDrinkThumb, strDrink, idDrink }, index } = props;
-  const { push } = useHistory();
-  const redirectToPageDetails = () => {
-    push(`drinks/${idDrink}`);
-  };
+  const { recipe: { strDrinkThumb, strDrink, idDrink, strAlcoholic }, index } = props;
   return (
-    <button type="button" onClick={ redirectToPageDetails }>
+    <Link to={ `drinks/${idDrink}` }>
       <div
         className="card"
         data-testid={ `${index}-recipe-card` }
@@ -20,9 +16,12 @@ export default function RecipeDrinkCard(props) {
           src={ strDrinkThumb }
           alt={ `Foto da receita ${strDrink}` }
         />
-        <h3 data-testid={ `${index}-card-name` }>{strDrink}</h3>
+        <div className="cardText">
+          <h3 data-testid={ `${index}-card-name` }>{strDrink}</h3>
+          <h4>{strAlcoholic}</h4>
+        </div>
       </div>
-    </button>
+    </Link>
   );
 }
 
