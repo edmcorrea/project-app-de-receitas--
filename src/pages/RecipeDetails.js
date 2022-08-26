@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import DrinkRecipeRecommendedCard from '../components/DrinkRecipeRecommendedCard';
 import FavoriteButton from '../components/FavoriteButton';
-import MealRecipeRecommendedCard from '../components/MealRecipeRecommendedCard';
+import RecipeRecommendedCard from '../components/RecipeRecommendedCard';
 import RecipeDetailDrinkCard from '../components/RecipeDetailDrinkCard';
 import RecipeDetailMealCard from '../components/RecipeDetailMealCard';
 import ShareButton from '../components/ShareButton';
@@ -120,13 +119,10 @@ function RecipeDetails() {
       <ShareButton path={ path.includes('foods') ? 'foods' : 'drinks' } id={ idRecipe } />
       <FavoriteButton currentProduct={ recipe } />
       {
-        recomendedRecipes && (path.includes('/foods') ? <DrinkRecipeRecommendedCard
-          recommendedRecipes={ getFirstSixRecipes() }
-        />
-          : (
-            <MealRecipeRecommendedCard
-              recommendedRecipes={ getFirstSixRecipes() }
-            />))
+        recomendedRecipes && (
+          <RecipeRecommendedCard
+            recommendedRecipes={ getFirstSixRecipes() }
+          />)
       }
       { !isThisRecipeDone && (
         <button
