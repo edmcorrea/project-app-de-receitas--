@@ -1,0 +1,45 @@
+.recommendedCards {
+  background-color: white;
+  padding: 10px 15px;
+}
+
+.recommendedCardsContent {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  width: 250px;
+  height: 200px;
+}
+
+.recommendedCardsContent img {
+  height: 90px;
+  width: 100px;
+}
+
+.recommendedCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100px;
+  padding: 0px 0px 10px 0px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.250);
+}
+
+.acompanhamentos {
+  color: #FF6A28;
+  margin: 0;
+}
+
+.recommendedCardsContent h3 {
+  align-self: flex-start;
+}
+
+.recommendedCard h4, h5 {
+  margin: 0;
+}
+
