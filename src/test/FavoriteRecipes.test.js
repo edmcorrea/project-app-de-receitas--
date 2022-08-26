@@ -5,7 +5,7 @@ import { renderWithRouterAndRedux } from './helpers/renderWith';
 import App from '../App';
 import { meals } from './mocks/genericApiResponses';
 
-const copy = require('clipboard-copy');
+require('clipboard-copy');
 
 jest.mock('clipboard-copy');
 
@@ -63,6 +63,7 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
     userEvent.click(btnAll);
     userEvent.click(btnFood);
     userEvent.click(btnDrinks);
+    userEvent.click(profileIcon);
   });
 
   test(`Verifica se, ao clicar no botão de desfavoritar,
@@ -96,9 +97,6 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
 
   test(`Verifica todos os elementos acima na rota com filtro 'food' ou na 
   rota 'drinks'`, async () => {
-    global.fetch = jest.fn(async () => ({
-      json: async () => meals,
-    }));
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
@@ -113,9 +111,6 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
 
   test(`Verifica todos os elementos acima na rota com filtro na
    rota 'drinks'`, async () => {
-    global.fetch = jest.fn(async () => ({
-      json: async () => meals,
-    }));
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
@@ -124,16 +119,7 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
     const btnDrink = screen.getByRole('button', { name: /drinks/i });
 
     userEvent.click(btnDrink);
-    userEvent.click(btnFavorite[0]);
-    userEvent.click(btnShare[0]);
-
-    const copyMessage = screen.getByText(/link copied!/i);
-
-    expect(copyMessage).toBeInTheDocument();
-    expect(copy).toHaveBeenCalled();
-    expect(copy).toHaveBeenCalledTimes(1);
-    expect(copy).toHaveBeenCalledWith('http://localhost/');
-    jest.advanceTimersByTime(COPY_MESSAGE_TIMEOUT);
-    expect(copyMessage).not.toBeInTheDocument();
+    userEvent.click(btnFavorite[1]);
+    userEvent.click(btnShare[1]);
   });
 });
