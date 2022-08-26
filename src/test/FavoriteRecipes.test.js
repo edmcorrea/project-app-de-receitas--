@@ -3,9 +3,8 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import App from '../App';
-import { meals } from './mocks/genericApiResponses';
 
-require('clipboard-copy');
+const copy = require('clipboard-copy');
 
 jest.mock('clipboard-copy');
 
@@ -42,9 +41,6 @@ afterEach(() => {
 
 describe('Verificação dos ele,elementos e eventos de click', () => {
   test('Verifica se aos elementos da paginafavorites-recipes estão na tela', async () => {
-    global.fetch = jest.fn(async () => ({
-      json: async () => meals,
-    }));
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
@@ -68,9 +64,6 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
 
   test(`Verifica se, ao clicar no botão de desfavoritar,
   a refeicao é removido da tela`, async () => {
-    global.fetch = jest.fn(async () => ({
-      json: async () => meals,
-    }));
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
@@ -82,44 +75,71 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
   test(`Verifica se, ao clicar no botão de compartilhar,
   o nome 'Link copied!' aparece na tela e o elemento e clicado 
   vai para o clipboard`, async () => {
-    global.fetch = jest.fn(async () => ({
-      json: async () => meals,
-    }));
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
     const btnShare = screen.queryAllByRole('img', { name: /share/i });
 
     userEvent.click(btnShare[0]);
-
-    // screen.logTestingPlaygroundURL();
   });
 
-  test(`Verifica todos os elementos acima na rota com filtro 'food' ou na 
-  rota 'drinks'`, async () => {
+  test(`Verifica todos os elementos dos cards buscados do localStorage 
+  na rota com filtro 'food'`, async () => {
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
     const btnFavorite = screen.queryAllByRole('img', { name: /favorite/i });
     const btnShare = screen.queryAllByRole('img', { name: /share/i });
     const btnFood = screen.getByRole('button', { name: /food/i });
+    const image = screen.queryByRole('img', { name: /spicy arrabiata penne/i });
+
+    expect(image).toBeInTheDocument();
 
     userEvent.click(btnFood);
     userEvent.click(btnFavorite[0]);
     userEvent.click(btnShare[0]);
+
+    expect(image).not.toBeInTheDocument();
   });
 
-  test(`Verifica todos os elementos acima na rota com filtro na
-   rota 'drinks'`, async () => {
+  test(`Verifica se ao clicar no botão 'share', os eventos ocorrem
+  corretamente`, async () => {
+    jest.useFakeTimers();
+    const COPY_MESSAGE_TIMEOUT = 2000;
     const { history } = renderWithRouterAndRedux(<App />);
     await waitFor(() => history.push(historyFavRecipes));
 
-    const btnFavorite = screen.queryAllByRole('img', { name: /favorite/i });
     const btnShare = screen.queryAllByRole('img', { name: /share/i });
-    const btnDrink = screen.getByRole('button', { name: /drinks/i });
 
-    userEvent.click(btnDrink);
-    userEvent.click(btnFavorite[1]);
-    userEvent.click(btnShare[1]);
+    expect(btnShare[0]).toBeInTheDocument();
+
+    userEvent.click(btnShare[0]);
+
+    const copyMessage = screen.queryAllByRole('heading', { name: /link copied!/i });
+
+    expect(copyMessage[0]).toBeInTheDocument();
+
+    const hRef = 'http://localhost:3000/foods/52771';
+
+    expect(copy).toHaveBeenCalledWith(hRef);
+    expect(copy).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(COPY_MESSAGE_TIMEOUT);
+    expect(copyMessage[0]).not.toBeInTheDocument();
+    // screen.logTestingPlaygroundURL();
+  });
+
+  test(`Verifica se ao clicar na imagem o elemento é redirecionado 
+  para a pagina esperada'`, async () => {
+    const { history } = renderWithRouterAndRedux(<App />);
+    await waitFor(() => history.push(historyFavRecipes));
+
+    const linkImg = screen.getByRole('img', { name: /spicy arrabiata penne/i });
+
+    userEvent.click(linkImg);
+
+    const btnStart = screen.getByRole('button', { name: /start recipe/i });
+    expect(btnStart).toBeInTheDocument();
+
+    // const hRef = 'http://localhost:3000/foods/52771';
   });
 });
