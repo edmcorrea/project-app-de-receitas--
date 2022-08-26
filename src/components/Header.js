@@ -1,15 +1,17 @@
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import './header.css';
 
-function Header({ pathname }, history) {
+function Header() {
   const [nameHeader, setNameHeader] = useState('');
   const [showIcon, setshowIcon] = useState(true);
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const { location: { pathname } } = useHistory();
+
   useEffect(() => {
     if (pathname === '/foods') {
       setNameHeader('Foods');
@@ -34,35 +36,26 @@ function Header({ pathname }, history) {
   }, [pathname]);
 
   return (
-    <>
+    <div className="header">
       <Link to="/profile">
-        <button type="button">
+        <button type="button" className="header-btn">
           <img src={ profileIcon } alt="profileIcon" data-testid="profile-top-btn" />
         </button>
       </Link>
-      <h2 data-testid="page-title">{nameHeader}</h2>
+      <h2 data-testid="page-title" className="header-title">{nameHeader}</h2>
       {showIcon && (
         <button
           type="button"
+          className="header-btn"
           onClick={ () => setShowSearchBar(!showSearchBar) }
         >
           <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>
       )}
-      {(showSearchBar) && <SearchBar history={ history } data-testid="search-input" /> }
-    </>
+      {(showSearchBar) && <SearchBar data-testid="search-input" /> }
+    </div>
   );
 }
-
-Header.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
-  }).isRequired,
-  pathname: PropTypes.string.isRequired,
-};
 
 const mapStateToProps = (store) => ({
   pathname: store.header.pathname,

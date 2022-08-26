@@ -71,7 +71,6 @@ export const singleDrink = {
       'strDrinkZH-HANT': null,
       strTags: null,
       strVideo: null,
-      strCategory: 'Cocktail',
       strIBA: null,
       strAlcoholic: 'Alcoholic',
       strGlass: 'Cocktail glass',

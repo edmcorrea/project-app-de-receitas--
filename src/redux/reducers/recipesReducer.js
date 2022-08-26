@@ -1,4 +1,4 @@
-import SEARCH_RECIPES from '../actions/actionTypes';
+import { SEARCH_RECIPES } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   recipes: [],

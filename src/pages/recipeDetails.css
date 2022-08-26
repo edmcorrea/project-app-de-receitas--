@@ -1,0 +1,16 @@
+.recipeDetails {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
+.detailCard img {
+  width: 200px;
+}
+
+.startRecipe {
+  bottom: 0;
+  left: 200px;
+  position: fixed;
+}
