@@ -123,6 +123,7 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
 
     expect(copy).toHaveBeenCalledWith(hRef);
     expect(copy).toHaveBeenCalledTimes(1);
+    expect(copy).toHaveBeenCalled();
     jest.advanceTimersByTime(COPY_MESSAGE_TIMEOUT);
     expect(copyMessage[0]).not.toBeInTheDocument();
     // screen.logTestingPlaygroundURL();
@@ -139,7 +140,5 @@ describe('Verificação dos ele,elementos e eventos de click', () => {
 
     const btnStart = screen.getByRole('button', { name: /start recipe/i });
     expect(btnStart).toBeInTheDocument();
-
-    // const hRef = 'http://localhost:3000/foods/52771';
   });
 });
