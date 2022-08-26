@@ -24,6 +24,7 @@ function RecipeinProgress() {
   useEffect(() => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
     const retrievedUsedIngredients = inProgressRecipes[keyForLocalStorage]
+    && inProgressRecipes[keyForLocalStorage][idRecipe]
       ? inProgressRecipes[keyForLocalStorage][idRecipe] : [];
     setUsedIngredients(retrievedUsedIngredients);
   }, []);

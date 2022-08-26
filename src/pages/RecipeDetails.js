@@ -88,10 +88,10 @@ function RecipeDetails() {
   }, []);
 
   useEffect(() => {
-    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
     console.log(`Receitas em progresso${inProgressRecipes}`);
-
-    if (inProgressRecipes !== null
+    console.log(inProgressRecipes);
+    if (inProgressRecipes[currentPath()]
       && Object.keys(inProgressRecipes[currentPath()]).includes(idRecipe)) {
       setIsThisRecipeStarted(true);
     }
