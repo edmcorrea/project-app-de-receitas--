@@ -49,7 +49,6 @@ function Recipes(props) {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      console.log(type);
       if (path === '/foods') {
         const categories = await fetchEndPoint('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
 

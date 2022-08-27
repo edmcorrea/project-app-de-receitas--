@@ -20,7 +20,7 @@ export default function RecipeDetailCard({ recipe, ingredients, measures }) {
             key={ `${ingredient[1]}${index}` }
             data-testid={ `${index}-ingredient-name-and-measure` }
           >
-            {`${ingredient[1]} ${measures[index][1]}`}
+            {`${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`}
 
           </h4>
         ))}
