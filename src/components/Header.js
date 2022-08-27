@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
+import profileIcon from '../images/profileIconNew2.png';
+import searchIcon from '../images/searchIconNew.png';
 import SearchBar from './SearchBar';
 import '../styles/header.css';
 
@@ -30,13 +30,13 @@ function Header() {
       setshowIcon(false);
     }
     if (pathname === '/favorite-recipes') {
-      setNameHeader('Favorite Recipes');
+      setNameHeader('Favorites');
       setshowIcon(false);
     }
   }, [pathname]);
 
   return (
-    <div className="header">
+    <header className="header">
       <Link to="/profile">
         <button type="button" className="header-btn">
           <img src={ profileIcon } alt="profileIcon" data-testid="profile-top-btn" />
@@ -53,7 +53,7 @@ function Header() {
         </button>
       )}
       {(showSearchBar) && <SearchBar data-testid="search-input" /> }
-    </div>
+    </header>
   );
 }
 

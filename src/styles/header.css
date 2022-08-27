@@ -2,30 +2,37 @@
 
 .header {
   align-items: center;
-  background-image: linear-gradient(180deg, #c0392b, #ecf0f1);
+  background-color: hsl(18, 100%, 58%);
   display: flex;
   font-family: Ubuntu , sans-serif;
-  font-size: 20px;
-  padding: 12px;
+  font-size: 21px;
+  padding: 7px 10px;
+  position: fixed;
 }
 
 .header-btn {
-  background-color: #ecf0f1;
-  border-radius: 7px;
+  background-color: hsl(18, 100%, 58%);
+  border: none;
 }
 
 .header-btn img {
-  background-color: #ecf0f1;
+  background-color: hsl(18, 100%, 58%);
   height: 35px;
   padding: 0.5px;
   width: 35px;
 }
 
 .header-title {
+  color: white;
   display: flex;
   justify-content: center;
   margin: 0;
   padding: 0;
-  text-shadow: white 0.1em 0.1em 0.2em;
   width: 250px;
+}
+
+.header-btn:focus {
+  box-decoration-break: none;
+  box-shadow: 0 0 0 0;
+  outline: none;
 }
