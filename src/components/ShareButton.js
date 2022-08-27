@@ -17,17 +17,15 @@ function ShareButton({ path, id }) {
   };
 
   return (
-    <>
+    <button
+      type="button"
+      data-testid="share-btn"
+      onClick={ () => handleShareButton() }
+      className="share-and-favorite-buttons"
+    >
       { showMessage && <p className="copy-message">Link copied!</p> }
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => handleShareButton() }
-        className="share-and-favorite-buttons"
-      >
-        <img src={ shareIcon } alt="Share" />
-      </button>
-    </>
+      <img src={ shareIcon } alt="Share" />
+    </button>
   );
 }
 

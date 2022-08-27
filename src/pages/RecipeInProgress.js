@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import FavoriteButton from '../components/FavoriteButton';
-import ShareButton from '../components/ShareButton';
+import DetailCardTitle from '../components/DetailCardTitle';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
 import '../styles/RecipeInProgress.css';
 
@@ -14,11 +12,8 @@ function RecipeinProgress() {
   const { params: { idRecipe }, path } = useRouteMatch();
   const { push } = useHistory();
 
-  const currentPath = path.includes('foods') ? 'foods' : 'drinks';
-  const objKey = path.includes('foods') ? 'Meal' : 'Drink';
   const keyForLocalStorage = path.includes('foods') ? 'meals' : 'cocktails';
 
-  console.log(idRecipe, path);
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
 
   useEffect(() => {
@@ -50,19 +45,9 @@ function RecipeinProgress() {
 
   return (
     <div className="detailCard">
-      <img
-        src={ recipe[`str${objKey}Thumb`] }
-        alt={ recipe[`str${objKey}`] }
-        data-testid="recipe-photo"
-      />
-      <h3 data-testid="recipe-category">
-        {
-          path.includes('foods') ? recipe.strCategory : recipe.strAlcoholic
-        }
-      </h3>
-      <ShareButton path={ currentPath } id={ recipe[`id${objKey}`] } />
-      <FavoriteButton currentProduct={ recipe } />
-      <h2 data-testid="recipe-title">{recipe[`str${objKey}`]}</h2>
+
+      <DetailCardTitle recipe={ recipe } />
+
       {ingredients.map((ingredient, index) => {
         const ingredientString = (
           `${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`);
@@ -83,7 +68,9 @@ function RecipeinProgress() {
           </label>
         );
       })}
+
       <p data-testid="instructions">{recipe.strInstructions}</p>
+
       <button
         type="button"
         onClick={ () => push('/done-recipes') }
@@ -96,4 +83,4 @@ function RecipeinProgress() {
   );
 }
 
-export default connect()(RecipeinProgress);
+export default RecipeinProgress;

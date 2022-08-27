@@ -1,9 +1,34 @@
 .share-and-favorite-buttons {
   background: transparent;
   border: none;
+  position: relative;
 }
 
 .share-and-favorite-buttons img {
   height: auto;
   max-width: 20px;
+}
+
+.copy-message {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-family: Ubuntu , sans-serif;
+  left: -12px;
+  padding: 10px;
+  position: absolute;
+  top: -75px;
+}
+
+.copy-message:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  bottom: -8px;
+  content: '';
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+  height: 0;
+  left: 22px;
+  position: absolute;
+  width: 0;
 }

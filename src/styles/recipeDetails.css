@@ -1,13 +1,9 @@
-.recipeDetails {
+/* .recipeDetails {
   align-items: center;
   display: flex;
   flex-direction: column;
   width: 340px;
-}
-
-.detailCard img {
-  width: 200px;
-}
+} */
 
 .startRecipe {
   bottom: 0;
