@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
+import Footer from '../components/Footer';
 import RecipeDetailCard from '../components/RecipeDetailCard';
 import RecipeRecommendedCard from '../components/RecipeRecommendedCard';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
@@ -94,7 +95,7 @@ function RecipeDetails() {
           { isThisRecipeStarted ? 'Continue Recipe' : 'Start Recipe'}
         </button>
       )}
-
+      <Footer />
     </div>
   );
 }
