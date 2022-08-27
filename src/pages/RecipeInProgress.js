@@ -17,8 +17,6 @@ function RecipeinProgress() {
 
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
 
-  console.log(recipe);
-
   useEffect(() => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || {};
     const retrievedUsedIngredients = inProgressRecipes[keyForLocalStorage]
@@ -54,6 +52,7 @@ function RecipeinProgress() {
   };
 
   const handleDoneButton = () => {
+    const currentPath = path.includes('foods') ? 'foods' : 'drinks';
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     localStorage.setItem('doneRecipes',
       JSON.stringify(

@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import '../styles/FavoriteAndShareButtons.css';
 
 function FavoriteButton({ currentProduct = {}, productId = undefined }) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const { location: { pathname } } = useHistory();
-  const type = pathname.includes('foods') ? 'food' : 'drink';
-  const keyString = pathname.includes('foods') ? 'Meal' : 'Drink';
-  const id = productId ?? pathname.split('/')[2];
+  const isMeal = Boolean(currentProduct.idMeal);
+  const type = isMeal ? 'food' : 'drink';
+  const keyString = isMeal ? 'Meal' : 'Drink';
+  const id = productId ?? currentProduct[`id${keyString}`];
 
   useEffect(() => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
