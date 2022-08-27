@@ -12,8 +12,8 @@ function useGetRecipeForDetails(id, path, ...setters) {
         ingredients,
         measures,
       } = getIngredientsAndMeasures(recipe);
-      setIngredients(ingredients);
       setMeasures(measures);
+      setIngredients(ingredients);
     };
     fetchRecipe();
   }, []);

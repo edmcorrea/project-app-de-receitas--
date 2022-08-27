@@ -1,16 +1,21 @@
 .recipeDetails {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 340px;
-}
-
-.detailCard img {
-  width: 200px;
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 150px;
+  padding: 0;
 }
 
 .startRecipe {
-  bottom: 0;
-  left: 200px;
+  background-color: #ff6a28;
+  border: none;
+  border-radius: 15px;
+  bottom: 10%;
+  color: white;
+  font-family: Ubuntu , sans-serif;
+  font-size: 20px;
+  left: 50%;
+  padding: 12px 0;
   position: fixed;
+  transform: translate(-50%, -50%);
+  width: 70vw;
 }
