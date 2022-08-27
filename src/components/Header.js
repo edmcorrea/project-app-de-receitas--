@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import SearchBar from './SearchBar';
 import '../styles/header.css';
+import SearchBar from './SearchBar';
+
+const SEARCH_BAR_TIMEOUT = 500;
 
 function Header() {
   const [nameHeader, setNameHeader] = useState('');
@@ -18,7 +20,7 @@ function Header() {
       searchBar.classList.add('slideToRight');
       setTimeout(() => {
         setShowSearchBar(!showSearchBar);
-      }, 500);
+      }, SEARCH_BAR_TIMEOUT);
     } else {
       setShowSearchBar(!showSearchBar);
     }
