@@ -107,10 +107,6 @@ input:checked ~ .checkmark {
   position: absolute;
 }
 
-.ingredient input:checked ~ .checkmark:after {
-  display: block;
-}
-
 .ingredient .checkmark:after {
   border: solid white;
   border-width: 0 3px 3px 0;
@@ -118,7 +114,9 @@ input:checked ~ .checkmark {
   left: 3px;
   top: 0;
   transform: rotate(45deg);
-  transform: rotate(45deg);
-  transform: rotate(45deg);
   width: 4px;
+}
+
+.ingredient input:checked ~ .checkmark:after {
+  display: block;
 }
