@@ -79,12 +79,16 @@ function RecipeDetails() {
           measures={ measures }
         />
       )}
-      {
-        recomendedRecipes && (
-          <RecipeRecommendedCard
-            recommendedRecipes={ getFirstSixRecipes() }
-          />)
-      }
+
+      <div className="recipe-text recipe-container">
+        {
+          recomendedRecipes && (
+            <RecipeRecommendedCard
+              recommendedRecipes={ getFirstSixRecipes() }
+            />)
+        }
+      </div>
+
       { !isThisRecipeDone && (
         <button
           type="button"
