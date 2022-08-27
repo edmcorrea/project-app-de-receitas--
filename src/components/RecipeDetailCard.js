@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import '../styles/RecipeDetailCard.css';
 import DetailCardTitle from './DetailCardTitle';
 
 export default function RecipeDetailCard({ recipe, ingredients, measures }) {
@@ -12,17 +13,18 @@ export default function RecipeDetailCard({ recipe, ingredients, measures }) {
 
       <DetailCardTitle recipe={ recipe } />
 
-      {ingredients.length > 0 && ingredients.map((ingredient, index) => (
-        <h4
-          key={ `${ingredient[1]}${index}` }
-          data-testid={ `${index}-ingredient-name-and-measure` }
-        >
-          {`${ingredient[1]} ${measures[index][1]}`}
+      <div className="recipe-text recipe-container">
+        <h3>Ingredients</h3>
+        {ingredients.length > 0 && ingredients.map((ingredient, index) => (
+          <h4
+            key={ `${ingredient[1]}${index}` }
+            data-testid={ `${index}-ingredient-name-and-measure` }
+          >
+            {`${ingredient[1]} ${measures[index][1]}`}
 
-        </h4>
-      ))}
-
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+          </h4>
+        ))}
+      </div>
 
       { path.includes('foods') && (
         <iframe
@@ -35,6 +37,12 @@ export default function RecipeDetailCard({ recipe, ingredients, measures }) {
         />
       )}
 
+      <div className="recipe-text recipe-container">
+        <h3>Instructions</h3>
+        <p data-testid="instructions">
+          {recipe.strInstructions}
+        </p>
+      </div>
     </div>
   );
 }

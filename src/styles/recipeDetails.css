@@ -1,9 +1,8 @@
-/* .recipeDetails {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 340px;
-} */
+.recipeDetails {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .startRecipe {
   bottom: 0;
