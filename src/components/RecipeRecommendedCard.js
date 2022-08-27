@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import '../styles/recommendedMealAndDrinkCard.css';
+import '../styles/recommendedCards.css';
 
 export default function RecipeRecommendedCard({ recommendedRecipes }) {
   const { path } = useRouteMatch();
@@ -10,27 +10,31 @@ export default function RecipeRecommendedCard({ recommendedRecipes }) {
 
   return (
     <div className="recommendedCards">
-      {recommendedRecipes.map((recomendedRecipe, index) => (
-        <div
-          key={ recomendedRecipe[`str${isMealOrDrink()}`] }
-          data-testid={ `${index}-recomendation-card` }
-        >
-          <h5>
-            {path.includes('foods')
-              ? recomendedRecipe.strCategory : recomendedRecipe.strAlcoholic }
-          </h5>
-          <h4
-            data-testid={ `${index}-recomendation-title` }
+      <h3 className="acompanhamentos">Acompanhamentos</h3>
+      <div className="recommendedCardsContent">
+        {recommendedRecipes.map((recomendedRecipe, index) => (
+          <div
+            key={ recomendedRecipe[`str${isMealOrDrink()}`] }
+            data-testid={ `${index}-recomendation-card` }
+            className="recommendedCard"
           >
-            {recomendedRecipe[`str${isMealOrDrink()}`]}
+            <img
+              src={ recomendedRecipe[`str${isMealOrDrink()}Thumb`] }
+              alt={ recomendedRecipe[`str${isMealOrDrink()}`] }
+            />
+            <h4
+              data-testid={ `${index}-recomendation-title` }
+            >
+              {recomendedRecipe[`str${isMealOrDrink()}`]}
 
-          </h4>
-          <img
-            src={ recomendedRecipe[`str${isMealOrDrink()}Thumb`] }
-            alt={ recomendedRecipe[`str${isMealOrDrink()}`] }
-          />
+            </h4>
+            <h5>
+              {path.includes('foods')
+                ? recomendedRecipe.strCategory : recomendedRecipe.strAlcoholic }
+            </h5>
 
-        </div>))}
+          </div>))}
+      </div>
     </div>
   );
 }

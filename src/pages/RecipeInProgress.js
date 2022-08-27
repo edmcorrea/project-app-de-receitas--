@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import FavoriteButton from '../components/FavoriteButton';
-import ShareButton from '../components/ShareButton';
+import DetailCardTitle from '../components/DetailCardTitle';
+import Footer from '../components/Footer';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
 import '../styles/RecipeInProgress.css';
 
@@ -14,8 +13,6 @@ function RecipeinProgress() {
   const { params: { idRecipe }, path } = useRouteMatch();
   const { push } = useHistory();
 
-  const currentPath = path.includes('foods') ? 'foods' : 'drinks';
-  const objKey = path.includes('foods') ? 'Meal' : 'Drink';
   const keyForLocalStorage = path.includes('foods') ? 'meals' : 'cocktails';
 
   useGetRecipeForDetails(idRecipe, path, setRecipe, setIngredients, setMeasures);
@@ -66,51 +63,53 @@ function RecipeinProgress() {
   };
 
   return (
-    <div className="detailCard">
-      <img
-        src={ recipe[`str${objKey}Thumb`] }
-        alt={ recipe[`str${objKey}`] }
-        data-testid="recipe-photo"
-      />
-      <h3 data-testid="recipe-category">
-        {
-          path.includes('foods') ? recipe.strCategory : recipe.strAlcoholic
-        }
-      </h3>
-      <ShareButton path={ currentPath } id={ recipe[`id${objKey}`] } />
-      <FavoriteButton currentProduct={ recipe } />
-      <h2 data-testid="recipe-title">{recipe[`str${objKey}`]}</h2>
-      {ingredients.map((ingredient, index) => {
-        const ingredientString = (
-          `${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`);
-        return (
-          <label
-            htmlFor={ ingredientString }
-            key={ `${ingredientString} ${index}` }
-            data-testid={ `${index}-ingredient-step` }
-            className="ingredient"
-          >
-            <input
-              id={ ingredientString }
-              type="checkbox"
-              checked={ usedIngredients.includes(ingredientString) }
-              onChange={ () => handleClickedIngredient(ingredientString) }
-            />
-            <span>{ingredientString}</span>
-          </label>
-        );
-      })}
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+    <div className="recipe-in-progress">
+
+      <DetailCardTitle recipe={ recipe } />
+
+      <div className="recipe-text recipe-container">
+        <h3>Ingredients</h3>
+        <div className="ingredients-input">
+          {ingredients.map((ingredient, index) => {
+            const ingredientString = (
+              `${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`);
+            return (
+              <label
+                htmlFor={ ingredientString }
+                key={ `${ingredientString} ${index}` }
+                data-testid={ `${index}-ingredient-step` }
+                className="ingredient"
+              >
+                <input
+                  id={ ingredientString }
+                  type="checkbox"
+                  checked={ usedIngredients.includes(ingredientString) }
+                  onChange={ () => handleClickedIngredient(ingredientString) }
+                />
+                <span className="ingredient-text">{ingredientString}</span>
+                <span className="checkmark" />
+              </label>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="recipe-text recipe-container">
+        <h3>Instructions</h3>
+        <p data-testid="instructions">{recipe.strInstructions}</p>
+      </div>
       <button
         type="button"
         onClick={ () => handleDoneButton() }
         data-testid="finish-recipe-btn"
         disabled={ usedIngredients.length !== ingredients.length }
+        className="finishRecipe"
       >
         Finish recipe
       </button>
+      <Footer />
     </div>
   );
 }
 
-export default connect()(RecipeinProgress);
+export default RecipeinProgress;
