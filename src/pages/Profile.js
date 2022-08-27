@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { nameHeader } from '../redux/actions';
+import '../styles/Profile.css';
 
 class Profile extends Component {
   constructor() {
@@ -16,10 +17,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    // const { history: { location: { pathname } }, updateCurrentPath } = this.props;
-    // console.log(pathname);
     const { updateCurrentPath } = this.props;
-    // console.log(window.location.pathname);
     this.getUserLocalStorage();
     updateCurrentPath(window.location.pathname);
   }
@@ -36,28 +34,31 @@ class Profile extends Component {
   render() {
     const { user } = this.state;
     return (
-      <div>
+      <div className="profile-page">
         <Header />
-        <h1 data-testid="profile-email">{ user ? user.email : '' }</h1>
-        <Link to="/done-recipes">
-          <button data-testid="profile-done-btn" type="button">
-            Done Recipes
-          </button>
-        </Link>
-        <Link to="/favorite-recipes">
-          <button data-testid="profile-favorite-btn" type="button">
-            Favorite Recipes
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            data-testid="profile-logout-btn"
-            type="button"
-            onClick={ this.clearLocalStorage }
-          >
-            Logout
-          </button>
-        </Link>
+        <div className="profile-main">
+          <h1 data-testid="profile-email">{ user ? user.email : '' }</h1>
+          <Link to="/done-recipes">
+            <button data-testid="profile-done-btn" type="button">
+              Done Recipes
+            </button>
+          </Link>
+          <Link to="/favorite-recipes">
+            <button data-testid="profile-favorite-btn" type="button">
+              Favorite Recipes
+            </button>
+          </Link>
+          <Link to="/">
+            <button
+              data-testid="profile-logout-btn"
+              type="button"
+              onClick={ this.clearLocalStorage }
+              className="logout-btn"
+            >
+              Logout
+            </button>
+          </Link>
+        </div>
         <Footer />
       </div>
     );
