@@ -14,7 +14,7 @@ function FavoriteButton({ currentProduct = {}, productId = undefined }) {
   useEffect(() => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     setIsFavorite(favoriteRecipes.some((recipe) => recipe.id === id));
-  }, []);
+  }, [id]);
 
   const addFavoriteRecipe = (favoriteRecipes) => {
     const {
