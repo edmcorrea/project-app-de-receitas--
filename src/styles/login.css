@@ -1,7 +1,211 @@
-/* * {
-  background-color: red;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Nunito:wght@400;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* body {
-  background-image: ;
-} */
+body, html {
+  font-family: Nunito, sans-serif;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-login {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: #EBEBEB;
+}
+
+.wrap-login {
+  width: 390px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 35px 55px 33px 55px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.login-form {
+  width: 100%;
+}
+
+.login-form-title {
+  font-family: Nunito, sans-serif;
+  display: block;
+  font-size: 30px;
+  color: azure;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.login-form-title img {
+  width: 200px;
+}
+
+.wrap-input {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid #ADADAD;
+  margin-bottom: 37px;
+}
+
+.input {
+  font-size: 15px;
+  color: black;
+  line-height: 1.2;
+  border: none;
+  display: block;
+  width: 100%;
+  height: 45px;
+  background-color: transparent;
+  padding: 0 5px;
+  font-family: Nunito, sans-serif;
+}
+
+.has-val {
+  font-size: 15px;
+  color: black;
+  line-height: 1.2;
+  border: none;
+  display: block;
+  width: 100%;
+  height: 45px;
+  background-color: transparent;
+  padding: 0 5px;
+  font-family: Nunito, sans-serif;
+}
+
+.focus-input {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  color: #212529;
+  font-family: Nunito, sans-serif;
+}
+
+.focus-input::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  background: #FF6A28;
+  background: -webkit-linear-gradient(to left, #FF8D5C, #F54900);
+  background: -o-linear-gradient(to left, #FF8D5C, #F54900);
+  background: -moz-linear-gradient(to left, #FF8D5C, #F54900);
+  background: linear-gradient(to left, #FF8D5C, #F54900);
+}
+
+.focus-input::after {
+  font-family: Nunito, sans-serif;
+  font-size: 15px;
+  color: #212529;
+  line-height: 1.2;
+  content: attr(data-placeholder);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  left: 0px;
+  padding-left: 5px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.has-val:focus {
+  outline: 0;
+}
+
+.input:focus+.focus-input::after {
+  top: -15px;
+}
+
+.input:focus+.focus-input::before {
+  width: 100%;
+}
+
+.has-val + .focus-input::after {
+  top: -15px;
+}
+
+.has-val + .focus-input::before {
+  width: 100%;
+}
+
+.container-login-form-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 13px;
+}
+
+.login-form-btn {
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: #6a7dfe;
+  background: -webkit-linear-gradient(to left, #FF6A28, #F54900);
+  background: -o-linear-gradient(to left, #FF6A28, #F54900);
+  background: -moz-linear-gradient(to left, #FF6A28, #F54900);
+  background: linear-gradient(to left, #FF6A28, #F54900);
+}
+
+.login-form-btn:disabled{
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: #6a7dfe;
+  background: -webkit-linear-gradient(to left, #FF8D5C, #FF8D5C);
+  background: -o-linear-gradient(to left, #FF8D5C, #FF8D5C);
+  background: -moz-linear-gradient(to left, #FF8D5C, #FF8D5C);
+  background: linear-gradient(to left, #FF8D5C, #FF8D5C);
+}
+
+.login-form-btn:hover {
+  cursor: pointer;
+}
+
+.login-form-btn:hover:disabled {
+  cursor: not-allowed;
+}

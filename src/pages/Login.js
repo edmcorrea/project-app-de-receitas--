@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/login.css';
+import imgLogo from '../images/HungryEnd.png';
 
 class Login extends React.Component {
   constructor() {
@@ -50,31 +51,52 @@ class Login extends React.Component {
   render() {
     const { email, password, isDisable } = this.state;
     return (
-      <div>
-        Email:
-        <input
-          data-testid="email-input"
-          type="text"
-          name="email"
-          onChange={ this.handleImput }
-          value={ email }
-        />
-        Senha:
-        <input
-          data-testid="password-input"
-          type="password"
-          name="password"
-          onChange={ this.handleImput }
-          value={ password }
-        />
-        <button
-          data-testid="login-submit-btn"
-          type="button"
-          disabled={ isDisable }
-          onClick={ this.submitButton }
-        >
-          Entrar
-        </button>
+      <div className="container">
+        <div className="container-login">
+          <div className="wrap-login">
+            <form className="login-form">
+              <span className="login-form-title">
+                <img src={ imgLogo } alt="logo" />
+              </span>
+              <div className="wrap-input">
+                <input
+                  className={email !== "" ? 'has-val' : 'input'}
+                  data-testid="email-input"
+                  type="email"
+                  name="email"
+                  onChange={ this.handleImput }
+                  value={ email }
+                />
+                <span className="focus-input" data-placeholder="Email"> </span>
+              </div>
+
+              <div className="wrap-input">
+                <input
+                  className={password !== "" ? 'has-val' : 'input'}
+                  data-testid="password-input"
+                  type="password"
+                  name="password"
+                  onChange={ this.handleImput }
+                  value={ password }
+                />
+                <span className="focus-input" data-placeholder="Senha"> </span>
+              </div>
+
+              <div className="container-login-form-btn">
+                <button
+                  className="login-form-btn"
+                  data-testid="login-submit-btn"
+                  type="button"
+                  disabled={ isDisable }
+                  onClick={ this.submitButton }
+                >
+                  Entrar
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
