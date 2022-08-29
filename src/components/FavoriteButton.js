@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.png';
+import whiteHeartIcon from '../images/whiteHeartIcon.png';
 import '../styles/FavoriteAndShareButtons.css';
 
 function FavoriteButton({ currentProduct = {}, productId = undefined }) {
@@ -14,7 +14,7 @@ function FavoriteButton({ currentProduct = {}, productId = undefined }) {
   useEffect(() => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     setIsFavorite(favoriteRecipes.some((recipe) => recipe.id === id));
-  }, []);
+  }, [id]);
 
   const addFavoriteRecipe = (favoriteRecipes) => {
     const {

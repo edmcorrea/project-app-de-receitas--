@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../images/shareIcon.png';
 import '../styles/FavoriteAndShareButtons.css';
 
 const copy = require('clipboard-copy');

@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap') ;
 
 body {
-  background-color: #ecf0f1;
+  background-color: #f0f0f0;
 }
 
 .favorite-recipes {
   padding-bottom: 3px;
+  background-color: #f0f0f0;
 }
 
 .card-favorite-recipe {
   align-items: center;
+  background-color: white;
   border-radius: 8px;
-  box-shadow: rgb(146, 146, 146) 0.1em 0.1em 0.2em 0.1em;
+  box-shadow: #adadad 0.1em 0.2em 0.1em;
   display: flex;
-  flex-direction: column;
   font-family: Ubuntu , sans-serif;
   font-size: 20px;
   margin: 16px 18px;
@@ -31,13 +32,18 @@ a:visited {
 
 .card-favorite-recipe a {
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-around;
   width: 100%;
 }
 
-.card-favorite-recipe div {
+.container-info {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: 140px;
+  justify-content: space-around;
   text-align: center;
   width: 100%;
 }
@@ -49,11 +55,11 @@ a:visited {
   font-size: 16px;
 }
 
-.card-favorite-recipe section {
+.card-favorite-recipe div section {
   display: flex;
+  flex-grow: 0.8;
   justify-content: space-around;
-  margin-top: 8px;
-  width: 50%;
+  width: 100%;
 }
 
 .horizontal-image {
@@ -62,25 +68,29 @@ a:visited {
 }
 
 .filter-btns {
-  background-color: #ecf0f1;
+  background-color: #f0f0f0;
   display: flex;
   justify-content: space-around;
+  margin-top: 65px;
 }
 
 .btn-type-meals {
-  background-color: #ecf0f1;
-  border-radius: 5px;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: #adadad 0.1em 0.2em 0.1em;
+  color: hsl(18, 100%, 58%);
   display: flex;
-  flex-basis: 33%;
+  flex-basis: 31%;
   font-family: Ubuntu , sans-serif;
   font-size: 18px;
   font-weight: 700;
   justify-content: center;
   margin: 0;
-  padding: 2px;
+  padding: 5px 2px;
 }
 
-.btn-type-meals:active {
-  background-color: #d34333;
-  color: #ecf0f1;
+.btn-type-meals:hover {
+  background-color: hsl(18, 100%, 58%);
+  color: white;
 }

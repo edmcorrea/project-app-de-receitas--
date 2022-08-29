@@ -82,7 +82,7 @@ function Recipes(props) {
   return (
     <div className="recipes">
       <Header history={ history } />
-      <div>
+      <div className="categoriesRecipes">
         { categoriesRecipes
         && categoriesRecipes.map((category) => (
           <button
@@ -111,12 +111,14 @@ function Recipes(props) {
           .map((recipe, index) => {
             if (type === 'meals') {
               return (<RecipeMealCard
+                currentFilter={ currentFilter }
                 key={ recipe.idMeal }
                 recipe={ recipe }
                 index={ index }
               />);
             }
             return (<RecipeDrinkCard
+              currentFilter={ currentFilter }
               key={ recipe.idDrink }
               recipe={ recipe }
               index={ index }

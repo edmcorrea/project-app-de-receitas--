@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import '../styles/recipeCard.css';
 
 export default function RecipeDrinkCard(props) {
-  const { recipe: { strDrinkThumb, strDrink, idDrink, strAlcoholic }, index } = props;
+  console.log(props);
+  const { recipe: { strDrinkThumb, strDrink, idDrink, strAlcoholic },
+    currentFilter, index } = props;
   return (
     <Link to={ `drinks/${idDrink}` }>
       <div
@@ -18,7 +20,7 @@ export default function RecipeDrinkCard(props) {
         />
         <div className="cardText">
           <h3 data-testid={ `${index}-card-name` }>{strDrink}</h3>
-          <h4>{strAlcoholic}</h4>
+          <h4>{currentFilter === 'All' ? strAlcoholic : currentFilter}</h4>
         </div>
       </div>
     </Link>
@@ -26,6 +28,7 @@ export default function RecipeDrinkCard(props) {
 }
 
 RecipeDrinkCard.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
+  currentFilter: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
+  recipe: PropTypes.objectOf(PropTypes.shape({})).isRequired,
 };

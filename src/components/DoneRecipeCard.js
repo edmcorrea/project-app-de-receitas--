@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import '../styles/DoneRecipeCard.css';
-import FavoriteButton from './FavoriteButton';
 import ShareButton from './ShareButton';
 
 export default function DoneRecipeCard({ recipe, index }) {
@@ -19,23 +18,26 @@ export default function DoneRecipeCard({ recipe, index }) {
           alt={ recipe[`str${objKey}`] }
         />
       </Link>
-
-      <div className="container-info">
+      <div className="container-info-general">
         <div className="container-text-share-btn">
-          <p data-testid={ `${index}-horizontal-top-text` }>
-            {
-              recipe.type === 'foods'
-                ? `${recipe.strArea} - ${recipe.strCategory}`
-                : `${recipe.strAlcoholic}`
-            }
-          </p>
+          <Link
+            to={ `/${recipe.type}/${recipe[`id${objKey}`]}` }
+            className="container-text"
+          >
+            <p data-testid={ `${index}-horizontal-top-text` }>
+              {
+                recipe.type === 'foods'
+                  ? `${recipe.strArea} - ${recipe.strCategory}`
+                  : `${recipe.strAlcoholic}`
+              }
+            </p>
+            <h3 data-testid={ `${index}-horizontal-name` }>
+              { recipe[`str${objKey}`] }
+            </h3>
+          </Link>
           <ShareButton path={ `${recipe.type}` } id={ recipe[`id${objKey}`] } />
-          <FavoriteButton currentProduct={ recipe } productId={ recipe[`id${objKey}`] } />
         </div>
 
-        <Link to={ `/${recipe.type}/${recipe[`id${objKey}`]}` }>
-          <p data-testid={ `${index}-horizontal-name` }>{ recipe[`str${objKey}`] }</p>
-        </Link>
         <p data-testid={ `${index}-horizontal-done-date` }>
           Done in:
           {' '}

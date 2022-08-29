@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
+// import FilterButtons from '../components/FilterButtons';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
 import { nameHeader } from '../redux/actions';
@@ -10,8 +11,10 @@ import '../styles/favoriteRecipes.css';
 
 function FavoriteRecipes(props) {
   const [filterAll, setFilterAll] = useState(true);
-  const [typeFood, setTypeFood] = useState('');
+  const [type, setType] = useState('food');
   const [stateFavoriteRecipes, setStateFavoriteRecipes] = useState([]);
+
+  useEffect(() => console.log(props), [props]);
 
   useEffect(() => {
     const { updateCurrentPath, history } = props;
@@ -25,6 +28,8 @@ function FavoriteRecipes(props) {
   return (
     <div className="favorite-recipes">
       <Header />
+      {/* <FilterButtons />
+       */}
       <section className="filter-btns">
         <button
           className="btn-type-meals"
@@ -39,8 +44,8 @@ function FavoriteRecipes(props) {
           type="button"
           data-testid="filter-by-food-btn"
           onClick={ () => {
-            setFilterAll(false);
-            setTypeFood('food');
+            setFilterAll();
+            setType('food');
           } }
         >
           Food
@@ -50,8 +55,8 @@ function FavoriteRecipes(props) {
           type="button"
           data-testid="filter-by-drink-btn"
           onClick={ () => {
-            setFilterAll(false);
-            setTypeFood('drink');
+            setFilterAll();
+            setType('drink');
           } }
         >
           Drinks
@@ -60,7 +65,7 @@ function FavoriteRecipes(props) {
       {stateFavoriteRecipes
         .filter((recipe) => {
           if (filterAll) return recipe;
-          return recipe.type === typeFood;
+          return recipe.type === type;
         })
         .map((fav, index) => (
           <div key={ fav.id } className="card-favorite-recipe">
@@ -71,7 +76,9 @@ function FavoriteRecipes(props) {
                 className="horizontal-image"
                 data-testid={ `${index}-horizontal-image` }
               />
-              <div>
+            </Link>
+            <div className="container-info">
+              <Link to={ `/${fav.type}s/${fav.id}` }>
                 <p
                   data-testid={ `${index}-horizontal-top-text` }
                 >
@@ -80,12 +87,12 @@ function FavoriteRecipes(props) {
                     : fav.alcoholicOrNot}
                 </p>
                 <h3 data-testid={ `${index}-horizontal-name` }>{fav.name}</h3>
-              </div>
-            </Link>
-            <section>
-              <ShareButton path={ `${fav.type}s` } id={ fav.id } />
-              <FavoriteButton productId={ fav.id } />
-            </section>
+              </Link>
+              <section>
+                <ShareButton path={ `${fav.type}s` } id={ fav.id } />
+                <FavoriteButton productId={ fav.id } />
+              </section>
+            </div>
           </div>
         ))}
     </div>
@@ -100,6 +107,11 @@ FavoriteRecipes.propTypes = {
   }).isRequired,
   updateCurrentPath: PropTypes.func.isRequired,
 };
+
+// const mapStateToProps = (store) => ({
+//   filterAllF: store.filterButtons.filterAll,
+//   typeF: store.filterButtons.typeRecipe,
+// });
 
 const mapDispatchToProps = (dispatch) => ({
   updateCurrentPath: (pathName) => dispatch(nameHeader(pathName)),

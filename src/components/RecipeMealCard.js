@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import '../styles/recipeCard.css';
 
 export default function RecipeMealCard(props) {
-  const { recipe: { strMealThumb, strMeal, idMeal, strCategory }, index } = props;
+  const { recipe: { strMealThumb, strMeal, idMeal, strCategory },
+    currentFilter, index } = props;
 
   return (
     <Link to={ `foods/${idMeal}` }>
@@ -25,7 +26,7 @@ export default function RecipeMealCard(props) {
             {strMeal}
 
           </h3>
-          <h4>{strCategory}</h4>
+          <h4>{currentFilter === 'All' ? strCategory : currentFilter}</h4>
         </div>
       </div>
     </Link>
@@ -33,6 +34,7 @@ export default function RecipeMealCard(props) {
 }
 
 RecipeMealCard.propTypes = {
-  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
+  currentFilter: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
+  recipe: PropTypes.objectOf(PropTypes.shape({})).isRequired,
 };
