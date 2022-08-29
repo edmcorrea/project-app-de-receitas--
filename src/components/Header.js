@@ -6,11 +6,25 @@ import searchIcon from '../images/searchIconNew.png';
 import SearchBar from './SearchBar';
 import '../styles/header.css';
 
+const SEARCH_BAR_TIMEOUT = 500;
+
 function Header() {
   const [nameHeader, setNameHeader] = useState('');
   const [showIcon, setshowIcon] = useState(true);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const { location: { pathname } } = useHistory();
+
+  const showSearchBarFunction = () => {
+    const searchBar = document.getElementsByClassName('searchBar')[0];
+    if (showSearchBar) {
+      searchBar.classList.add('slideToRight');
+      setTimeout(() => {
+        setShowSearchBar(!showSearchBar);
+      }, SEARCH_BAR_TIMEOUT);
+    } else {
+      setShowSearchBar(!showSearchBar);
+    }
+  };
 
   useEffect(() => {
     if (pathname === '/foods') {
@@ -47,7 +61,7 @@ function Header() {
         <button
           type="button"
           className="header-btn"
-          onClick={ () => setShowSearchBar(!showSearchBar) }
+          onClick={ showSearchBarFunction }
         >
           <img src={ searchIcon } alt="searchIcon" data-testid="search-top-btn" />
         </button>

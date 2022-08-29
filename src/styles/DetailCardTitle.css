@@ -1,0 +1,42 @@
+.detail-title-card {
+  background-color: white;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-family: Ubuntu , sans-serif;
+  width: 100vw;
+}
+
+.detail-title-card .recipe-image-container {
+  align-items: center;
+  display: flex;
+  height: 180px;
+  justify-content: center;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.recipe-image-container img {
+  height: auto;
+  width: 100%;
+}
+
+.recipe-info-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.recipe-title-container h2 {
+  color: #ff6a28;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.recipe-title-container h3 {
+  color: #212529;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px;
+}

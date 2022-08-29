@@ -49,7 +49,6 @@ function Recipes(props) {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      console.log(type);
       if (path === '/foods') {
         const categories = await fetchEndPoint('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
 
@@ -83,7 +82,7 @@ function Recipes(props) {
   return (
     <div className="recipes">
       <Header history={ history } />
-      <div>
+      <div className="categoriesRecipes">
         { categoriesRecipes
         && categoriesRecipes.map((category) => (
           <button

@@ -1,21 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .container-done-card {
-  align-items: center;
-  border: 2px solid red;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgb(146, 146, 146) 0.1em 0.1em 0.2em 0.1em;
   display: flex;
-  justify-content: center;
-  max-width: 480px;
+  font-family: Ubuntu , sans-serif;
+  font-size: 20px;
+  margin: 16px 8px;
+  padding: 6px;
+  text-align: center;
 }
 
-.container-done-card .horizontal-image {
-  width: 120px;
-}
-
-.container-info {
-  padding: 0 8px;
+.container-info-general {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .container-text-share-btn {
   display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.container-text p {
+  margin-bottom: 15px;
 }
 
 .container-tag {
@@ -25,6 +40,5 @@
 .container-tag p {
   background-color: #eee;
   border-radius: 24px;
-  margin: 8px;
   padding: 8px;
 }

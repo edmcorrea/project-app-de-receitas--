@@ -12,9 +12,9 @@ footer {
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  padding: 7px 10px;
+  padding: 7px 3px;
   position: fixed;
-  width: 94%;
+  width: 98%;
 }
 
 .footer-btn {

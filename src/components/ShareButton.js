@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../images/shareIcon.png';
 import '../styles/FavoriteAndShareButtons.css';
 
 const copy = require('clipboard-copy');
@@ -17,17 +17,15 @@ function ShareButton({ path, id }) {
   };
 
   return (
-    <>
+    <button
+      type="button"
+      data-testid="share-btn"
+      onClick={ () => handleShareButton() }
+      className="share-and-favorite-buttons"
+    >
       { showMessage && <p className="copy-message">Link copied!</p> }
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => handleShareButton() }
-        className="share-and-favorite-buttons"
-      >
-        <img src={ shareIcon } alt="Share" />
-      </button>
-    </>
+      <img src={ shareIcon } alt="Share" />
+    </button>
   );
 }
 

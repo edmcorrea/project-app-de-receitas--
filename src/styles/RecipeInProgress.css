@@ -1,3 +1,122 @@
-.ingredient input:checked + span {
+.recipe-in-progress {
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 160px;
+  padding: 0;
+}
+
+.ingredient {
+  position: relative;
+}
+
+.ingredient .ingredient-text {
+  margin-left: 25px;
+}
+
+.ingredient:last-child {
+  padding-bottom: 15px;
+}
+
+.ingredient input:checked + .ingredient-text {
   text-decoration: line-through;
+}
+
+.ingredients-input {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 400;
+  gap: 20px;
+  justify-content: center;
+}
+
+.recipe-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-family: Ubuntu , sans-serif;
+  margin: 25px auto;
+  padding: 10px 15px;
+  width: 85vw;
+}
+
+.recipe-text h3 {
+  color: #ff6a28;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+
+.recipe-text h4, p {
+  color: #212529;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.recipe-text p {
+  line-height: 25px;
+}
+
+.finishRecipe {
+  background-color: #ff6a28;
+  border: none;
+  border-radius: 15px;
+  bottom: 10%;
+  color: white;
+  font-family: Ubuntu , sans-serif;
+  font-size: 20px;
+  left: 50%;
+  padding: 12px 0;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+}
+
+.finishRecipe:disabled {
+  opacity: 0.6;
+}
+
+.ingredient input {
+  cursor: pointer;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+}
+
+.checkmark {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  height: 13px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 13px;
+}
+
+input:checked ~ .checkmark {
+  background-color: #ff6a28;
+}
+
+.checkmark:after {
+  content: '';
+  display: none;
+  position: absolute;
+}
+
+.ingredient .checkmark:after {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  height: 7px;
+  left: 3px;
+  top: 0;
+  transform: rotate(45deg);
+  width: 4px;
+}
+
+.ingredient input:checked ~ .checkmark:after {
+  display: block;
 }

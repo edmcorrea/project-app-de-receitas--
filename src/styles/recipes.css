@@ -1,3 +1,7 @@
+.categoriesRecipes {
+  margin-top: 55px;
+}
+
 .sectionRecipesCards {
   display: flex;
   flex-wrap: wrap;

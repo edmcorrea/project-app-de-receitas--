@@ -1,70 +1,50 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import shareIcon from '../images/shareIcon.svg';
-
 import '../styles/DoneRecipeCard.css';
-
-const copy = require('clipboard-copy');
-
-const COPY_MESSAGE_TIMEOUT = 2000;
+import ShareButton from './ShareButton';
 
 export default function DoneRecipeCard({ recipe, index }) {
-  const [showMessage, setShowMessage] = useState(false);
-
-  const shareButton = (recipeType, recipeId) => {
-    copy(`${window.location.origin}/${recipeType}s/${recipeId}`);
-    setShowMessage(true);
-    setTimeout(() => setShowMessage(false), COPY_MESSAGE_TIMEOUT);
-  };
-
+  const objKey = recipe.type === 'foods' ? 'Meal' : 'Drink';
+  const tags = recipe.strTags ? recipe.strTags.split(',') : [];
   return (
     <div className="container-done-card">
-      <Link to={ `/${recipe.type}s/${recipe.id}` }>
+      <Link to={ `/${recipe.type}/${recipe[`id${objKey}`]}` }>
         <img
           className="horizontal-image"
           data-testid={ `${index}-horizontal-image` }
-          src={ recipe.image }
-          alt={ recipe.name }
+          src={ recipe[`str${objKey}Thumb`] }
+          alt={ recipe[`str${objKey}`] }
         />
       </Link>
-
-      <div className="container-info">
+      <div className="container-info-general">
         <div className="container-text-share-btn">
-          <p data-testid={ `${index}-horizontal-top-text` }>
-            {
-              recipe.type === 'food'
-                ? `${recipe.nationality} - ${recipe.category}`
-                : `${recipe.alcoholicOrNot}`
-            }
-          </p>
-          <button
-            data-testid="share-btn"
-            type="button"
-            onClick={ () => shareButton(recipe.type, recipe.id) }
+          <Link
+            to={ `/${recipe.type}/${recipe[`id${objKey}`]}` }
+            className="container-text"
           >
-            <img
-              data-testid={ `${index}-horizontal-share-btn` }
-              src={ shareIcon }
-              alt="Icone para Compartilhar"
-            />
-          </button>
+            <p data-testid={ `${index}-horizontal-top-text` }>
+              {
+                recipe.type === 'foods'
+                  ? `${recipe.strArea} - ${recipe.strCategory}`
+                  : `${recipe.strAlcoholic}`
+              }
+            </p>
+            <h3 data-testid={ `${index}-horizontal-name` }>
+              { recipe[`str${objKey}`] }
+            </h3>
+          </Link>
+          <ShareButton path={ `${recipe.type}` } id={ recipe[`id${objKey}`] } />
         </div>
 
-        <Link to={ `/${recipe.type}s/${recipe.id}` }>
-          <p data-testid={ `${index}-horizontal-name` }>{ recipe.name }</p>
-        </Link>
         <p data-testid={ `${index}-horizontal-done-date` }>
           Done in:
           {' '}
-          { recipe.doneDate }
+          { recipe.doneDate || 'oi' }
         </p>
-
-        { showMessage && <p className="copy-message">Link copied!</p> }
-
         <div className="container-tag">
-          {recipe.tags.map((tag) => (
+          {tags.map((tag) => (
             <p
               key={ tag }
               data-testid={ `${index}-${tag}-horizontal-tag` }
