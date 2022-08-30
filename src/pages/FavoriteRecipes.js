@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
-// import FilterButtons from '../components/FilterButtons';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
 import { nameHeader } from '../redux/actions';
@@ -28,8 +27,6 @@ function FavoriteRecipes(props) {
   return (
     <div className="favorite-recipes">
       <Header />
-      {/* <FilterButtons />
-       */}
       <section className="filter-btns">
         <button
           className="btn-type-meals"

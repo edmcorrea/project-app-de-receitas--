@@ -7,6 +7,7 @@ import RecipeRecommendedCard from '../components/RecipeRecommendedCard';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
 import fetchEndPoint from '../services/fetchFunction';
 import '../styles/recipeDetails.css';
+import logoGif from '../images/logoGif1.gif';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
@@ -72,13 +73,15 @@ function RecipeDetails() {
 
   return (
     <div className="recipeDetails">
-      { ingredients.length && (
-        <RecipeDetailCard
-          recipe={ recipe }
-          ingredients={ ingredients }
-          measures={ measures }
-        />
-      )}
+      { ingredients.length
+        ? (
+          <RecipeDetailCard
+            recipe={ recipe }
+            ingredients={ ingredients }
+            measures={ measures }
+          />
+        )
+        : <img src={ logoGif } alt="logo" className="logo-gif" />}
 
       <div className="recipe-text recipe-container">
         {

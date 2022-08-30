@@ -6,13 +6,10 @@ body {
 
 .container-done-recipes {
   align-items: center;
-  border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 3px;
-
-  /* margin: 20px; */
 }
 
 .container-buttons {

@@ -108,7 +108,7 @@ function Recipes(props) {
       </div>
       <section className="sectionRecipesCards">
         { !recipes[type]
-          ? <img src={ logoGif } alt="logo" className='logo-gif'/>
+          ? <img src={ logoGif } alt="logo" className="logo-gif" />
           : (recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
             .map((recipe, index) => {
               if (type === 'meals') {

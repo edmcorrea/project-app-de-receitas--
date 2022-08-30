@@ -33,3 +33,7 @@ footer {
   box-decoration-break: none;
   outline: none;
 }
+
+.logo {
+  width: 40px;
+}
