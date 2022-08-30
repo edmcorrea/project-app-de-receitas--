@@ -40,3 +40,10 @@
   font-weight: 400;
   margin-top: 10px;
 }
+
+.interaction-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+  width: 28%;
+}

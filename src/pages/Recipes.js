@@ -7,6 +7,7 @@ import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import RecipeMealCard from '../components/RecipeMealCard';
 import { nameHeader, searchRecipes } from '../redux/actions';
 import fetchEndPoint from '../services/fetchFunction';
+import logoGif from '../images/logoGif1.gif';
 import '../styles/recipes.css';
 
 function Recipes(props) {
@@ -106,24 +107,25 @@ function Recipes(props) {
         </button>
       </div>
       <section className="sectionRecipesCards">
-        { recipes[type]
-        && recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
-          .map((recipe, index) => {
-            if (type === 'meals') {
-              return (<RecipeMealCard
+        { !recipes[type]
+          ? <img src={ logoGif } alt="logo" className="logo-gif" />
+          : (recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
+            .map((recipe, index) => {
+              if (type === 'meals') {
+                return (<RecipeMealCard
+                  currentFilter={ currentFilter }
+                  key={ recipe.idMeal }
+                  recipe={ recipe }
+                  index={ index }
+                />);
+              }
+              return (<RecipeDrinkCard
                 currentFilter={ currentFilter }
-                key={ recipe.idMeal }
+                key={ recipe.idDrink }
                 recipe={ recipe }
                 index={ index }
               />);
-            }
-            return (<RecipeDrinkCard
-              currentFilter={ currentFilter }
-              key={ recipe.idDrink }
-              recipe={ recipe }
-              index={ index }
-            />);
-          })}
+            }))}
       </section>
       <Footer />
     </div>

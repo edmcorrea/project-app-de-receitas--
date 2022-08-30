@@ -12,13 +12,12 @@ body {
 .card-favorite-recipe {
   align-items: center;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: #adadad 0.1em 0.2em 0.1em;
   display: flex;
   font-family: Ubuntu , sans-serif;
   font-size: 20px;
   margin: 16px 18px;
-  padding: 6px;
   text-align: center;
 }
 
@@ -63,7 +62,8 @@ a:visited {
 }
 
 .horizontal-image {
-  border-radius: 8px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
   width: 140px;
 }
 
