@@ -5,9 +5,9 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeDrinkCard from '../components/RecipeDrinkCard';
 import RecipeMealCard from '../components/RecipeMealCard';
+import logoGif from '../images/logoGif1.gif';
 import { nameHeader, searchRecipes } from '../redux/actions';
 import fetchEndPoint from '../services/fetchFunction';
-import logoGif from '../images/logoGif1.gif';
 import '../styles/recipes.css';
 
 function Recipes(props) {
@@ -82,9 +82,15 @@ function Recipes(props) {
 
   return (
     <div className="recipes">
-      <Header history={ history } />
-      <div className="categoriesRecipes">
-        { categoriesRecipes
+      { !recipes[type]
+        ? (
+          <img src={ logoGif } alt="logo" className="logo-gif" />
+        )
+        : (
+          <>
+            <Header history={ history } />
+            <div className="categoriesRecipes">
+              { categoriesRecipes
         && categoriesRecipes.map((category) => (
           <button
             key={ category.strCategory }
@@ -96,38 +102,40 @@ function Recipes(props) {
           >
             {category.strCategory}
           </button>))}
-        <button
-          onClick={ fetchAllRecipes }
-          type="button"
-          data-testid="All-category-filter"
-          value="All"
-        >
-          All
+              <button
+                onClick={ fetchAllRecipes }
+                type="button"
+                data-testid="All-category-filter"
+                value="All"
+              >
+                All
 
-        </button>
-      </div>
-      <section className="sectionRecipesCards">
-        { !recipes[type]
-          ? <img src={ logoGif } alt="logo" className="logo-gif" />
-          : (recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
-            .map((recipe, index) => {
-              if (type === 'meals') {
-                return (<RecipeMealCard
-                  currentFilter={ currentFilter }
-                  key={ recipe.idMeal }
-                  recipe={ recipe }
-                  index={ index }
-                />);
-              }
-              return (<RecipeDrinkCard
-                currentFilter={ currentFilter }
-                key={ recipe.idDrink }
-                recipe={ recipe }
-                index={ index }
-              />);
-            }))}
-      </section>
-      <Footer />
+              </button>
+            </div>
+            <section className="sectionRecipesCards">
+              { recipes[type] && (
+                recipes[type].filter((_recipe, index) => index < maxRecipesToShow)
+                  .map((recipe, index) => {
+                    if (type === 'meals') {
+                      return (<RecipeMealCard
+                        currentFilter={ currentFilter }
+                        key={ recipe.idMeal }
+                        recipe={ recipe }
+                        index={ index }
+                      />);
+                    }
+                    return (<RecipeDrinkCard
+                      currentFilter={ currentFilter }
+                      key={ recipe.idDrink }
+                      recipe={ recipe }
+                      index={ index }
+                    />);
+                  }))}
+            </section>
+            <Footer />
+          </>
+        )}
+
     </div>
   );
 }
