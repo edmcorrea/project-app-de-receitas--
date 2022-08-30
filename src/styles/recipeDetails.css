@@ -20,6 +20,7 @@
   width: 70vw;
 }
 
-.logo-gif {
+.recipeDetails .logo-gif {
+  padding-top: 100px;
   width: 360px;
 }

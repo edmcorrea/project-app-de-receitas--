@@ -5,9 +5,9 @@ import Footer from '../components/Footer';
 import RecipeDetailCard from '../components/RecipeDetailCard';
 import RecipeRecommendedCard from '../components/RecipeRecommendedCard';
 import useGetRecipeForDetails from '../hooks/useGetRecipeForDetails';
+import logoGif from '../images/logoGif1.gif';
 import fetchEndPoint from '../services/fetchFunction';
 import '../styles/recipeDetails.css';
-import logoGif from '../images/logoGif1.gif';
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState({});
@@ -73,36 +73,39 @@ function RecipeDetails() {
 
   return (
     <div className="recipeDetails">
-      { ingredients.length
+      { ingredients.length === 0
         ? (
-          <RecipeDetailCard
-            recipe={ recipe }
-            ingredients={ ingredients }
-            measures={ measures }
-          />
+          <img src={ logoGif } alt="logo" className="logo-gif" />
         )
-        : <img src={ logoGif } alt="logo" className="logo-gif" />}
+        : (
+          <>
+            <RecipeDetailCard
+              recipe={ recipe }
+              ingredients={ ingredients }
+              measures={ measures }
+            />
+            <div className="recipe-text recipe-container">
+              {
+                recomendedRecipes && (
+                  <RecipeRecommendedCard
+                    recommendedRecipes={ getFirstSixRecipes() }
+                  />)
+              }
+            </div>
 
-      <div className="recipe-text recipe-container">
-        {
-          recomendedRecipes && (
-            <RecipeRecommendedCard
-              recommendedRecipes={ getFirstSixRecipes() }
-            />)
-        }
-      </div>
+            { !isThisRecipeDone && (
+              <button
+                type="button"
+                className="startRecipe"
+                onClick={ redirectToInProgress }
+                data-testid="start-recipe-btn"
+              >
+                { isThisRecipeStarted ? 'Continue Recipe' : 'Start Recipe'}
+              </button>
+            )}
+            <Footer />
+          </>)}
 
-      { !isThisRecipeDone && (
-        <button
-          type="button"
-          className="startRecipe"
-          onClick={ redirectToInProgress }
-          data-testid="start-recipe-btn"
-        >
-          { isThisRecipeStarted ? 'Continue Recipe' : 'Start Recipe'}
-        </button>
-      )}
-      <Footer />
     </div>
   );
 }

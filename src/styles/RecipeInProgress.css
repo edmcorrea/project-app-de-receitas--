@@ -120,3 +120,8 @@ input:checked ~ .checkmark {
 .ingredient input:checked ~ .checkmark:after {
   display: block;
 }
+
+.recipe-in-progress .logo-gif {
+  padding-top: 100px;
+  width: 360px;
+}
