@@ -3,7 +3,6 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import '../styles/RecipeDetailCard.css';
 import DetailCardTitle from './DetailCardTitle';
-import logoGif from '../images/logoGif1.gif';
 
 export default function RecipeDetailCard({ recipe, ingredients, measures }) {
   const { path } = useRouteMatch();
@@ -17,7 +16,7 @@ export default function RecipeDetailCard({ recipe, ingredients, measures }) {
       <div className="recipe-text recipe-container">
         <h3>Ingredients</h3>
         {ingredients.length > 0
-          ? (ingredients.map((ingredient, index) => (
+          && (ingredients.map((ingredient, index) => (
             <h4
               key={ `${ingredient[1]}${index}` }
               data-testid={ `${index}-ingredient-name-and-measure` }
@@ -25,8 +24,7 @@ export default function RecipeDetailCard({ recipe, ingredients, measures }) {
               {`${ingredient[1]} ${measures[index] ? measures[index][1] : ''}`}
 
             </h4>
-          )))
-          : <img src={ logoGif } alt="logo" className="logo-gif" />}
+          )))}
       </div>
 
       { path.includes('foods') && (

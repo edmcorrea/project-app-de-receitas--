@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import '../styles/recipeCard.css';
 
 export default function RecipeDrinkCard(props) {
-  console.log(props);
   const { recipe: { strDrinkThumb, strDrink, idDrink, strAlcoholic },
     currentFilter, index } = props;
   return (
