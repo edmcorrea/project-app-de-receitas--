@@ -10,7 +10,7 @@ export default function RecipeRecommendedCard({ recommendedRecipes }) {
 
   return (
     <div className="recommendedCards">
-      <h3 className="acompanhamentos">Acompanhamentos</h3>
+      <h3 className="acompanhamentos">Goes well with</h3>
       <div className="recommendedCardsContent">
         {recommendedRecipes.map((recomendedRecipe, index) => (
           <div

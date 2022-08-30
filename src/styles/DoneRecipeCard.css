@@ -1,8 +1,3 @@
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-
 .container-done-card {
   background-color: white;
   border-radius: 8px;
@@ -10,16 +5,21 @@
   display: flex;
   font-family: Ubuntu , sans-serif;
   font-size: 20px;
+  height: 140px;
   margin: 16px 8px;
-  padding: 6px;
   text-align: center;
+  width: 280px;
+}
+
+.container-done-card .horizontal-image {
+  height: 100%;
 }
 
 .container-info-general {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -29,8 +29,9 @@
   width: 100%;
 }
 
-.container-text p {
-  margin-bottom: 15px;
+.container-info-general p {
+  color: rgba(184, 184, 184, 1);
+  font-size: 0.9rem;
 }
 
 .container-tag {
@@ -40,5 +41,12 @@
 .container-tag p {
   background-color: #eee;
   border-radius: 24px;
+  color: rgba(33, 37, 41, 1);
   padding: 8px;
+}
+
+.tag-and-share {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }

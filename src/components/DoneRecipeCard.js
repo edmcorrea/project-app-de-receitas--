@@ -19,39 +19,39 @@ export default function DoneRecipeCard({ recipe, index }) {
         />
       </Link>
       <div className="container-info-general">
-        <div className="container-text-share-btn">
-          <Link
-            to={ `/${recipe.type}/${recipe[`id${objKey}`]}` }
-            className="container-text"
-          >
-            <p data-testid={ `${index}-horizontal-top-text` }>
-              {
-                recipe.type === 'foods'
-                  ? `${recipe.strArea} - ${recipe.strCategory}`
-                  : `${recipe.strAlcoholic}`
-              }
-            </p>
-            <h3 data-testid={ `${index}-horizontal-name` }>
-              { recipe[`str${objKey}`] }
-            </h3>
-          </Link>
-          <ShareButton path={ `${recipe.type}` } id={ recipe[`id${objKey}`] } />
-        </div>
+        <p data-testid={ `${index}-horizontal-top-text` }>
+          {
+            recipe.type === 'foods'
+              ? `${recipe.strArea} - ${recipe.strCategory}`
+              : `${recipe.strAlcoholic}`
+          }
+        </p>
+        <Link
+          to={ `/${recipe.type}/${recipe[`id${objKey}`]}` }
+          className="container-text"
+        >
+          <h3 data-testid={ `${index}-horizontal-name` }>
+            { recipe[`str${objKey}`] }
+          </h3>
+        </Link>
 
         <p data-testid={ `${index}-horizontal-done-date` }>
           Done in:
           {' '}
-          { recipe.doneDate || 'oi' }
+          { recipe.doneDate}
         </p>
-        <div className="container-tag">
-          {tags.map((tag) => (
-            <p
-              key={ tag }
-              data-testid={ `${index}-${tag}-horizontal-tag` }
-            >
-              { tag }
-            </p>
-          ))}
+        <div className="tag-and-share">
+          <div className="container-tag">
+            {tags.map((tag) => (
+              <p
+                key={ tag }
+                data-testid={ `${index}-${tag}-horizontal-tag` }
+              >
+                { tag }
+              </p>
+            ))}
+          </div>
+          <ShareButton path={ `${recipe.type}` } id={ recipe[`id${objKey}`] } />
         </div>
       </div>
     </div>

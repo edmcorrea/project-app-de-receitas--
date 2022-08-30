@@ -27,6 +27,7 @@
 .card h4 {
   color : rgba(184, 184, 184, 1);
   font-size: 1rem;
+  font-weight: 500;
   margin: 0;
 }
 

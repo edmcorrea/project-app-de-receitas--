@@ -1,6 +1,8 @@
 .profile-page {
   background-color: white;
   height: 100vh;
+  margin-top: -20px;
+  padding-top: 100px;
 }
 
 .profile-main {

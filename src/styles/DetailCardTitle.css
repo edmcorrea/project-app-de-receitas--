@@ -23,7 +23,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0 15px 15px;
 }
 
 .recipe-title-container h2 {
@@ -45,5 +45,6 @@
   display: flex;
   gap: 20px;
   justify-content: end;
+  margin-top: 15px;
   width: 28%;
 }
