@@ -16,21 +16,14 @@
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
-![logoReverse](https://user-images.githubusercontent.com/98132078/188945970-3653d8ca-7124-4472-b129-e39c3d907e33.png)
 
   <h3 align="center">APP DE RECEITAS</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Para quem gosta de fazer comida gostosa
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
   </p>
 </div>
 
