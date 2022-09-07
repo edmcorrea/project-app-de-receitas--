@@ -11,18 +11,19 @@
 -->
 
 <!-- PROJECT LOGO -->
+
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">APP DE RECEITAS</h3>
+    <p align="center"> Para quem gosta de fazer comida gostosa </p>
+  
+  ![Design sem nome](https://user-images.githubusercontent.com/98132078/188953064-f71f9965-7182-454f-bb2a-a4cbcf57bda9.gif)
 
   <p align="center">
     Para quem gosta de fazer comida gostosa
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://lnkd.in/djChP-5h"><strong>Explore the docs »</strong></a>
     <br />
   </p>
 </div>
@@ -62,16 +63,13 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Desenvolvemos um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React Hooks!
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Link para o projeto: https://lnkd.in/djChP-5h
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+O app consiste em um sistema que permite visualizar, buscar, filtrar, favoritar, compartilhar e acompanhar o processo de preparação de receitas e drinks. A base de dados foram 2 APIs distintas, uma para comidas e outra para bebidas.
+O layout teve como foco dispositivos móveis, então todos os protótipos vão estar desenvolvidos em telas menores.
+As demandas foram desenvolvidas em paralelo, pelas pessoas do grupo.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
