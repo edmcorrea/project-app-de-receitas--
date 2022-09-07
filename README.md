@@ -11,104 +11,100 @@
 -->
 
 <!-- PROJECT LOGO -->
-
-<br />
 <div align="center">
 
   <h3 align="center">APP DE RECEITAS</h3>
     <p align="center"> Para quem gosta de fazer comida gostosa </p>
   
   ![Design sem nome](https://user-images.githubusercontent.com/98132078/188953064-f71f9965-7182-454f-bb2a-a4cbcf57bda9.gif)
-
+  <br />
+  
   <p align="center">
-    Para quem gosta de fazer comida gostosa
-    <br />
-    <a href="https://lnkd.in/djChP-5h"><strong>Explore the docs »</strong></a>
-    <br />
+    <a href="https://lnkd.in/djChP-5h"><strong>Navegue na versão web »</strong></a>
   </p>
 </div>
 
 
-
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Índice</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">Sobre o Projeto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Construído com</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
+<!--     <li>
+      <a href="#getting-started">Introdução</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequisites">Pré requisitos</a></li>
+        <li><a href="#installation">Instalação</a></li>
       </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    </li> -->
+    <li><a href="#usage">Uso</a></li>
+    <li><a href="#roadmap">Roteiro</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#contact">Contato</a></li>
+    <li><a href="#acknowledgments">Agradecimentos</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre o Projeto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Desenvolvemos um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React Hooks!
+Desenvolvemos um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React-Hooks!
 
-Link para o projeto: https://lnkd.in/djChP-5h
-
-O app consiste em um sistema que permite visualizar, buscar, filtrar, favoritar, compartilhar e acompanhar o processo de preparação de receitas e drinks. A base de dados foram 2 APIs distintas, uma para comidas e outra para bebidas.
+O app consiste em um sistema que permite visualizar, buscar, filtrar, favoritar, compartilhar e acompanhar o processo de preparação de receitas e bebidas. 
+A base de dados foram 2 APIs distintas, uma para comidas e outra para bebidas.
 O layout teve como foco dispositivos móveis, então todos os protótipos vão estar desenvolvidos em telas menores.
 As demandas foram desenvolvidas em paralelo, pelas pessoas do grupo.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Voltar ao Topo</a>)</p>
 
 
 
-### Built With
+### Construído com
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+<!-- This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples. -->
 
-* [![Next][Next.js]][Next-url]
+<!-- * [![Next][Next.js]][Next-url] -->
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+<!-- * [![Vue][Vue.js]][Vue-url] -->
+<!-- * [![Angular][Angular.io]][Angular-url] -->
+<!-- * [![Svelte][Svelte.dev]][Svelte-url] -->
+<!-- * [![Laravel][Laravel.com]][Laravel-url] -->
+<!-- * [![Bootstrap][Bootstrap.com]][Bootstrap-url] -->
+<!-- * [![JQuery][JQuery.com]][JQuery-url] -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Voltar ao topo</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+
+<!-- ## Introdução
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps. -->
 
-### Prerequisites
+<!-- ### Pré-requisitos
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
-  ```
+  ``` -->
 
-### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
+<!-- ### Installation
+
+ _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -124,7 +120,7 @@ _Below is an example of how you can instruct your audience on installing and set
    const API_KEY = 'ENTER YOUR API';
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
