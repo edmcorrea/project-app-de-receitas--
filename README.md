@@ -20,7 +20,7 @@
   <br />
   
   <p align="center">
-    <a href="https://lnkd.in/djChP-5h"><strong>Navegue na versão web »</strong></a>
+    <a href="https://lnkd.in/djChP-5h"><strong>Navegue na versão demo web »</strong></a>
   </p>
 </div>
 
@@ -30,23 +30,20 @@
   <summary>Índice</summary>
   <ol>
     <li>
-      <a href="#about-the-project">Sobre o Projeto</a>
+      <a href="#sobre-o-projeto">Sobre o Projeto</a>
       <ul>
-        <li><a href="#built-with">Construído com</a></li>
+        <li><a href="#construído-com">Construído com</a></li>
       </ul>
     </li>
 <!--     <li>
       <a href="#getting-started">Introdução</a>
       <ul>
-        <li><a href="#prerequisites">Pré requisitos</a></li>
+        <li><a href="#pre-requisites">Pré-requisitos</a></li>
         <li><a href="#installation">Instalação</a></li>
       </ul>
     </li> -->
-    <li><a href="#usage">Uso</a></li>
-    <li><a href="#roadmap">Roteiro</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contato</a></li>
-    <li><a href="#acknowledgments">Agradecimentos</a></li>
+    <li><a href="#uso">Uso</a></li>
+    <li><a href="#contato">Contato</a></li>
   </ol>
 </details>
 
@@ -125,21 +122,29 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Uso
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Na tela principal, é possível escolher entre bebidas e comidas e também realizar uma busca a partir de um ingrediente, inserindo o nome ou a primeira letra.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Clicando em uma das comidas (ou bebidas), o usuário é redirecionado para a página de detalhes desse item, mostrando uma prévia para desenvolvimento da receita, além de mostrar opções de acompanhamento para a receita escolhida.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Ao clicar em iniciar a receita (START RECIPE), o usuário pula para a tela de receita em progresso, onde ele vai dando check's nos ingredientes já preparados, sem perder o progresso da refeição já iniciada anteriormente.
+
+Concluído o preparo da refeição (FINISH  RECIPE), o usuário é redirecinado para a página de receitas concluídas.
+
+Além dessas páginas, é possível favoritar os alimentos ou bebidas para fazer posteriormente e também existe a página de profile, onde é possível deslogar o usuário do APP. 
+
+<!-- _=For more examples, please refer to the [Documentation](https://example.com)_ -->
+
+<p align="right">(<a href="#readme-top">Voltar ao topo</a>)</p>
 
 
 
-<!-- ROADMAP -->
-## Roadmap
+<!-- ROADMAP
+## Roteiro de Execução
 
-- [x] Add Changelog
-- [x] Add back to top links
+- [ ] Tela
+- [ ] Add back to top links
 - [ ] Add Additional Templates w/ Examples
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
@@ -148,11 +153,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
-<!-- CONTRIBUTING -->
+<!-- CONTRIBUTING 
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -166,31 +171,30 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
-
-<!-- LICENSE -->
+<!-- LICENSE 
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
 <!-- CONTACT -->
-## Contact
+## Contato
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Edmilson Corrêa - edm.correa@hotmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Link do Projeto: https://github.com/edmcorrea/project-app-de-receitas--
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Voltar ao topo</a>)</p>
 
 
 
-<!-- ACKNOWLEDGMENTS -->
+<!-- ACKNOWLEDGMENTS 
 ## Acknowledgments
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
@@ -204,7 +208,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
