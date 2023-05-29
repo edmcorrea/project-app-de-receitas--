@@ -1,5 +1,8 @@
 .recipes {
   margin-bottom: 80px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
 .categoriesRecipes {
@@ -44,7 +47,9 @@
   width: 100%;
 }
 
-.logo-gif {
-  padding-top: 100px;
-  width: 375px;
+.container-gif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }

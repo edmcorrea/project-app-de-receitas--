@@ -56,7 +56,9 @@ function Header() {
           <img src={ profileIcon } alt="profileIcon" data-testid="profile-top-btn" />
         </button>
       </Link>
-      <h2 data-testid="page-title" className="header-title">{nameHeader}</h2>
+      <h2 data-testid="page-title" className="header-title">
+        {nameHeader}
+      </h2>
       {showIcon && (
         <button
           type="button"

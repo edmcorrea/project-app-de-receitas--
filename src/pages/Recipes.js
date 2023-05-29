@@ -84,7 +84,9 @@ function Recipes(props) {
     <div className="recipes">
       { !recipes[type]
         ? (
-          <img src={ logoGif } alt="logo" className="logo-gif" />
+          <div className="container-gif">
+            <img src={ logoGif } alt="logo" className="logo-gif" />
+          </div>
         )
         : (
           <>

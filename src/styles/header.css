@@ -8,6 +8,7 @@
   font-size: 21px;
   padding: 7px 28px;
   position: fixed;
+  justify-content: space-between;
   top: 0;
   width: 100%;
 }
@@ -30,7 +31,6 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  width: 250px;
 }
 
 .header-btn:focus {
