@@ -75,7 +75,9 @@ function RecipeDetails() {
     <div className="recipeDetails">
       { ingredients.length === 0
         ? (
-          <img src={ logoGif } alt="logo" className="logo-gif" />
+          <div className="container-gif">
+            <img src={ logoGif } alt="logo" className="logo-gif" />
+          </div>
         )
         : (
           <>
