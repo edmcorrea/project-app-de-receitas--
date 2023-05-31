@@ -93,17 +93,18 @@ function Recipes(props) {
             <Header history={ history } />
             <div className="categoriesRecipes">
               { categoriesRecipes
-        && categoriesRecipes.map((category) => (
-          <button
-            key={ category.strCategory }
-            id="button-category"
-            type="button"
-            data-testid={ `${category.strCategory}-category-filter` }
-            onClick={ fetchRecipesByCategory }
-            value={ category.strCategory }
-          >
-            {category.strCategory}
-          </button>))}
+              && categoriesRecipes.map((category) => (
+                <button
+                  key={ category.strCategory }
+                  id="button-category"
+                  type="button"
+                  data-testid={ `${category.strCategory}-category-filter` }
+                  onClick={ fetchRecipesByCategory }
+                  value={ category.strCategory }
+                >
+                  {category.strCategory}
+                </button>
+              ))}
               <button
                 onClick={ fetchAllRecipes }
                 type="button"
@@ -111,7 +112,6 @@ function Recipes(props) {
                 value="All"
               >
                 All
-
               </button>
             </div>
             <section className="sectionRecipesCards">

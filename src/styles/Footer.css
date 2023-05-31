@@ -1,12 +1,3 @@
-/* footer {
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 16px;
-  position: fixed;
-  width: 100%;
-} */
-
 footer {
   background-color: hsl(18, 100%, 58%);
   bottom: 0;

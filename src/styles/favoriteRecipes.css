@@ -13,7 +13,7 @@ body {
   align-items: center;
   background-color: white;
   border-radius: 10px;
-  box-shadow: #adadad 0.1em 0.2em 0.1em;
+  box-shadow: #adadad 0.51px 0.51px 2px;
   display: flex;
   font-family: Ubuntu , sans-serif;
   font-size: 20px;
@@ -78,7 +78,7 @@ a:visited {
   background-color: white;
   border: none;
   border-radius: 15px;
-  box-shadow: #adadad 0.1em 0.2em 0.1em;
+  box-shadow: #adadad 0.51px 0.51px 2px;
   color: hsl(18, 100%, 58%);
   display: flex;
   flex-basis: 31%;
