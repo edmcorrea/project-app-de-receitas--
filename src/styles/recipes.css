@@ -54,3 +54,9 @@
 .logo-gif {
   width: 80%;
 }
+
+@media (min-width: 820px) {
+  .logo-gif {
+    width: 600px;
+  }
+}
